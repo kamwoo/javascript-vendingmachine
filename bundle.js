@@ -623,9 +623,10 @@ var COINS = {
     ten: 10
 };
 var URL = {
-    MANAGE_ITEM: 'mangeItem',
-    CHARGE_MONEY: 'chargeMoney',
-    PURCHASE_ITEM: 'purchaseItem'
+    BASE_URL: '/javascript-vendingmachine',
+    MANAGE_ITEM: '/manageItem',
+    CHARGE_MONEY: '/chargeMoney',
+    PURCHASE_ITEM: '/purchaseItem'
 };
 var CUSTOM_EVENT = {
     ROUTE_CHANGE: 'ROUTE_CHANGE',
