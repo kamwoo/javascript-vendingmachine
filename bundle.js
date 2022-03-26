@@ -734,6 +734,7 @@ var AppController = /** @class */ (function () {
     };
     AppController.prototype.route = function () {
         var pathname = window.location.pathname;
+        console.log(pathname);
         if (pathname === '/') {
             this.manageItemController.loadPage();
             this.appView.changeButtonColor(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.SELECTOR.ID_STRING.ITEM_MANGE_TAB);
