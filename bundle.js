@@ -624,9 +624,9 @@ var COINS = {
 };
 var URL = {
     BASE_URL: '/javascript-vendingmachine',
-    MANAGE_ITEM: '/manageItem',
-    CHARGE_MONEY: '/chargeMoney',
-    PURCHASE_ITEM: '/purchaseItem'
+    MANAGE_ITEM: "manageItem",
+    CHARGE_MONEY: "chargeMoney",
+    PURCHASE_ITEM: "purchaseItem"
 };
 var CUSTOM_EVENT = {
     ROUTE_CHANGE: 'ROUTE_CHANGE',
@@ -735,23 +735,22 @@ var AppController = /** @class */ (function () {
     };
     AppController.prototype.route = function () {
         var pathname = window.location.pathname;
-        console.log(pathname);
-        if (pathname === '/') {
+        if (pathname === _constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.BASE_URL) {
             this.manageItemController.loadPage();
             this.appView.changeButtonColor(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.SELECTOR.ID_STRING.ITEM_MANGE_TAB);
             return;
         }
-        if (pathname === "/".concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.MANAGE_ITEM)) {
+        if (pathname === "".concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.BASE_URL, "/").concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.MANAGE_ITEM)) {
             this.manageItemController.loadPage();
             this.appView.changeButtonColor(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.SELECTOR.ID_STRING.ITEM_MANGE_TAB);
             return;
         }
-        if (pathname === "/".concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.CHARGE_MONEY)) {
+        if (pathname === "".concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.BASE_URL, "/").concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.CHARGE_MONEY)) {
             this.chargeMoneyController.loadPage();
             this.appView.changeButtonColor(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.SELECTOR.ID_STRING.MONEY_CHARGE_TAB);
             return;
         }
-        if (pathname === "/".concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.PURCHASE_ITEM)) {
+        if (pathname === "".concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.BASE_URL, "/").concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.PURCHASE_ITEM)) {
             this.purchaseItemController.render();
             this.appView.changeButtonColor(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.SELECTOR.ID_STRING.ITEM_PURCHASE_TAB);
         }
