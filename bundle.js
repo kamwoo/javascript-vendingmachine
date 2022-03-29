@@ -559,24 +559,141 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/js/constants/constants.ts":
-/*!***************************************!*\
-  !*** ./src/js/constants/constants.ts ***!
-  \***************************************/
+/***/ "./src/js/constants/appContants.ts":
+/*!*****************************************!*\
+  !*** ./src/js/constants/appContants.ts ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SELECTOR": () => (/* binding */ SELECTOR),
-/* harmony export */   "COINS": () => (/* binding */ COINS),
 /* harmony export */   "URL": () => (/* binding */ URL),
-/* harmony export */   "CUSTOM_EVENT": () => (/* binding */ CUSTOM_EVENT),
-/* harmony export */   "ERROR_MESSAGE": () => (/* binding */ ERROR_MESSAGE),
-/* harmony export */   "CONFIRM_MESSAGE": () => (/* binding */ CONFIRM_MESSAGE),
+/* harmony export */   "CUSTOM_EVENT": () => (/* binding */ CUSTOM_EVENT)
+/* harmony export */ });
+const URL = {
+    BASE_URL: '/javascript-vendingmachine',
+    MANAGE_ITEM: `manageItem`,
+    CHARGE_MONEY: `chargeMoney`,
+    PURCHASE_ITEM: `purchaseItem`,
+};
+const CUSTOM_EVENT = {
+    ROUTE_CHANGE: 'ROUTE_CHANGE',
+    CHARGE_MONEY: 'CHARGE_MONEY',
+    ADD_ITEM: 'ADD_ITEM',
+    TABLE_ITEM_CHANGE: 'TABLE_ITEM_CHANGE',
+    TABLE_ITEM_DELETE: 'TABLE_ITEM_DELETE',
+};
+
+
+/***/ }),
+
+/***/ "./src/js/constants/confirmConstants.ts":
+/*!**********************************************!*\
+  !*** ./src/js/constants/confirmConstants.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CONFIRM_MESSAGE": () => (/* binding */ CONFIRM_MESSAGE)
+/* harmony export */ });
+const CONFIRM_MESSAGE = {
+    DELETE: '정말로 삭제하시겠습니까?',
+};
+
+
+/***/ }),
+
+/***/ "./src/js/constants/errorConstants.ts":
+/*!********************************************!*\
+  !*** ./src/js/constants/errorConstants.ts ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ERROR_MESSAGE": () => (/* binding */ ERROR_MESSAGE)
+/* harmony export */ });
+const ERROR_MESSAGE = {
+    ITEM_NAME: {
+        DUPLICATE_ITEM: '이미 등록된 상품명입니다.',
+        EMPTY_NAME: '공백으로된 상품명을 입력할 수 없습니다.',
+        OVER_MAX_LENGTH: '10자 이상의 상품명을 입력할 수 없습니다.',
+    },
+    ITEM_PRICE: {
+        NOT_INTEGER: '정수가 아닌 숫자는 가격으로 입력할 수 없습니다.',
+        UNDER_MIN: '100원보다 낮은 가격은 입력할 수 없습니다.',
+        OVER_MAX: '10,000원 보다 큰 가격을 입력할 수 없습니다.',
+        INVALID_UNIT: '10원 단위의 가격만 입력할 수 있습니다.',
+    },
+    ITEM_QUANTITY: {
+        NOT_INTEGER: '정수가 아닌 숫자는 수량으로 입력할 수 없습니다.',
+        UNDER_MIN: '0이하의 수는 수량으로 입력할 수 없습니다.',
+        OVER_MAX: '20개 보다 많은 수량을 입력할 수 없습니다.',
+    },
+    INPUT_MONEY: {
+        NOT_INTEGER: '정수가 아닌 숫자는 금액으로 입력할 수 없습니다.',
+        UNDER_MIN: '0원이하의 금액은 투입할 수 없습니다.',
+        OVER_MAX: '100,000원 보다 많은 금액을 투입할 수 없습니다.',
+        INVALID_UNIT: '10원 단위의 금액만 투입할 수 있습니다.',
+    },
+};
+
+
+/***/ }),
+
+/***/ "./src/js/constants/vendingMachineConstants.ts":
+/*!*****************************************************!*\
+  !*** ./src/js/constants/vendingMachineConstants.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ITEM": () => (/* binding */ ITEM),
+/* harmony export */   "COINS": () => (/* binding */ COINS),
 /* harmony export */   "MONEY": () => (/* binding */ MONEY)
 /* harmony export */ });
-var SELECTOR = {
+const ITEM = {
+    NAME: {
+        MAX_LENGTH: 10,
+    },
+    PRICE: {
+        MIN: 100,
+        MAX: 10000,
+        UNIT: 10,
+    },
+    QUANTITY: {
+        MIN: 0,
+        MAX: 20,
+    },
+};
+const COINS = {
+    fiveHundred: 500,
+    hundred: 100,
+    fifty: 50,
+    ten: 10,
+};
+const MONEY = {
+    MIN: 0,
+    MAX: 100000,
+    UNIT: 10,
+};
+
+
+/***/ }),
+
+/***/ "./src/js/constants/viewConstants.ts":
+/*!*******************************************!*\
+  !*** ./src/js/constants/viewConstants.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SELECTOR": () => (/* binding */ SELECTOR)
+/* harmony export */ });
+const SELECTOR = {
     ID: {
         APP: '#app',
         CONTENT: '#content',
@@ -585,7 +702,7 @@ var SELECTOR = {
         ADD_ITEM_NAME: '#add-item-name',
         ADD_ITEM_PRICE: '#add-item-price',
         ADD_ITEM_QUANTITY: '#add-item-quantity',
-        ADD_ITEM_FORM: '#add-item-form'
+        ADD_ITEM_FORM: '#add-item-form',
     },
     CLASS: {
         CHARGE_MONEY_INPUT: '.charge-money-input',
@@ -594,14 +711,16 @@ var SELECTOR = {
         NAV_BUTTON: '.nav-button',
         ITEM_TABLE_BUTTON_CONTAINER: '.item-table-button-container',
         TABLE_CONTAINER: '.table-container',
+        ITEM_TABLE: '.item-table',
+        ITEM_TABLE_BODY: '.item-table-body',
         ITEM_TABLE_CONFIRM_BUTTON: '.item-table-confirm-button',
         ITEM_TABLE_DELETE_BUTTON: '.item-table-delete-button',
-        ITEM_TABLE_CHANGE_BUTTON: '.item-table-change-button'
+        ITEM_TABLE_CHANGE_BUTTON: '.item-table-change-button',
     },
     ID_STRING: {
         ITEM_MANGE_TAB: 'item-manage-tab',
         MONEY_CHARGE_TAB: 'money-charge-tab',
-        ITEM_PURCHASE_TAB: 'item-purchase-tab'
+        ITEM_PURCHASE_TAB: 'item-purchase-tab',
     },
     CLASS_STRING: {
         NAV_BUTTON_CLICKED: 'nav-button-clicked',
@@ -613,73 +732,8 @@ var SELECTOR = {
         TABLE_ITEM_INPUT_QUANTITY: 'table-item-input-quantity',
         ITEM_TABLE_CHANGE_BUTTON: 'item-table-change-button',
         ITEM_TABLE_DELETE_BUTTON: 'item-table-delete-button',
-        ITEM_TABLE_CONFIRM_BUTTON: 'item-table-confirm-button'
-    }
-};
-var COINS = {
-    fiveHundred: 500,
-    hundred: 100,
-    fifty: 50,
-    ten: 10
-};
-var URL = {
-    BASE_URL: '/javascript-vendingmachine',
-    MANAGE_ITEM: "manageItem",
-    CHARGE_MONEY: "chargeMoney",
-    PURCHASE_ITEM: "purchaseItem"
-};
-var CUSTOM_EVENT = {
-    ROUTE_CHANGE: 'ROUTE_CHANGE',
-    CHARGE_MONEY: 'CHARGE_MONEY',
-    ADD_ITEM: 'ADD_ITEM',
-    TABLE_ITEM_CHANGE: 'TABLE_ITEM_CHANGE',
-    TABLE_ITEM_DELETE: 'TABLE_ITEM_DELETE'
-};
-var ERROR_MESSAGE = {
-    ITEM_NAME: {
-        DUPLICATE_ITEM: '이미 등록된 상품명입니다.',
-        EMPTY_NAME: '공백으로된 상품명을 입력할 수 없습니다.',
-        OVER_MAX_LENGTH: '10자 이상의 상품명을 입력할 수 없습니다.'
+        ITEM_TABLE_CONFIRM_BUTTON: 'item-table-confirm-button',
     },
-    ITEM_PRICE: {
-        NOT_INTEGER: '정수가 아닌 숫자는 가격으로 입력할 수 없습니다.',
-        UNDER_MIN: '100원보다 낮은 가격은 입력할 수 없습니다.',
-        OVER_MAX: '10,000원 보다 큰 가격을 입력할 수 없습니다.',
-        INVALID_UNIT: '10원 단위의 가격만 입력할 수 있습니다.'
-    },
-    ITEM_QUANTITY: {
-        NOT_INTEGER: '정수가 아닌 숫자는 수량으로 입력할 수 없습니다.',
-        UNDER_MIN: '0이하의 수는 수량으로 입력할 수 없습니다.',
-        OVER_MAX: '20개 보다 많은 수량을 입력할 수 없습니다.'
-    },
-    INPUT_MONEY: {
-        NOT_INTEGER: '정수가 아닌 숫자는 금액으로 입력할 수 없습니다.',
-        UNDER_MIN: '0원이하의 금액은 투입할 수 없습니다.',
-        OVER_MAX: '100,000원 보다 많은 금액을 투입할 수 없습니다.',
-        INVALID_UNIT: '10원 단위의 금액만 투입할 수 있습니다.'
-    }
-};
-var CONFIRM_MESSAGE = {
-    DELETE: '정말로 삭제하시겠습니까?'
-};
-var ITEM = {
-    NAME: {
-        MAX_LENGTH: 10
-    },
-    PRICE: {
-        MIN: 100,
-        MAX: 10000,
-        UNIT: 10
-    },
-    QUANTITY: {
-        MIN: 0,
-        MAX: 20
-    }
-};
-var MONEY = {
-    MIN: 0,
-    MAX: 100000,
-    UNIT: 10
 };
 
 
@@ -693,71 +747,67 @@ var MONEY = {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ AppController)
 /* harmony export */ });
 /* harmony import */ var _manageItemController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./manageItemController */ "./src/js/controllers/manageItemController.ts");
 /* harmony import */ var _chargeMoneyController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./chargeMoneyController */ "./src/js/controllers/chargeMoneyController.ts");
 /* harmony import */ var _purchaseItemController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./purchaseItemController */ "./src/js/controllers/purchaseItemController.ts");
 /* harmony import */ var _vendingMachine_vendingMachine__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../vendingMachine/vendingMachine */ "./src/js/vendingMachine/vendingMachine.ts");
 /* harmony import */ var _views_AppView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/AppView */ "./src/js/views/AppView.ts");
-/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../constants/constants */ "./src/js/constants/constants.ts");
+/* harmony import */ var _constants_appContants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../constants/appContants */ "./src/js/constants/appContants.ts");
+/* harmony import */ var _constants_viewConstants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../constants/viewConstants */ "./src/js/constants/viewConstants.ts");
 
 
 
 
 
 
-var AppController = /** @class */ (function () {
-    function AppController() {
+
+class AppController {
+    constructor() {
         this.appView = new _views_AppView__WEBPACK_IMPORTED_MODULE_4__["default"]();
         this.vendingMachine = new _vendingMachine_vendingMachine__WEBPACK_IMPORTED_MODULE_3__["default"]();
         this.manageItemController = new _manageItemController__WEBPACK_IMPORTED_MODULE_0__["default"](this.vendingMachine);
         this.chargeMoneyController = new _chargeMoneyController__WEBPACK_IMPORTED_MODULE_1__["default"](this.vendingMachine);
         this.purchaseItemController = new _purchaseItemController__WEBPACK_IMPORTED_MODULE_2__["default"](this.vendingMachine);
-        this.bindEvents();
-    }
-    AppController.prototype.bindEvents = function () {
-        window.addEventListener(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.CUSTOM_EVENT.ROUTE_CHANGE, this.handleRouteChange.bind(this));
+        window.addEventListener(_constants_appContants__WEBPACK_IMPORTED_MODULE_5__.CUSTOM_EVENT.ROUTE_CHANGE, this.handleRouteChange.bind(this));
         window.addEventListener('popstate', this.route.bind(this));
-    };
-    AppController.prototype.handleRouteChange = function (event) {
-        var $navButton = event.detail.$navButton;
-        if ($navButton.id === _constants_constants__WEBPACK_IMPORTED_MODULE_5__.SELECTOR.ID_STRING.ITEM_MANGE_TAB) {
-            window.history.pushState(null, null, _constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.MANAGE_ITEM);
-        }
-        if ($navButton.id === _constants_constants__WEBPACK_IMPORTED_MODULE_5__.SELECTOR.ID_STRING.MONEY_CHARGE_TAB) {
-            window.history.pushState(null, null, _constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.CHARGE_MONEY);
-        }
-        if ($navButton.id === _constants_constants__WEBPACK_IMPORTED_MODULE_5__.SELECTOR.ID_STRING.ITEM_PURCHASE_TAB) {
-            window.history.pushState(null, null, _constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.PURCHASE_ITEM);
+    }
+    handleRouteChange(event) {
+        const { $navButton } = event.detail;
+        switch ($navButton.id) {
+            case _constants_viewConstants__WEBPACK_IMPORTED_MODULE_6__.SELECTOR.ID_STRING.ITEM_MANGE_TAB:
+                window.history.pushState(null, null, _constants_appContants__WEBPACK_IMPORTED_MODULE_5__.URL.MANAGE_ITEM);
+                break;
+            case _constants_viewConstants__WEBPACK_IMPORTED_MODULE_6__.SELECTOR.ID_STRING.MONEY_CHARGE_TAB:
+                window.history.pushState(null, null, _constants_appContants__WEBPACK_IMPORTED_MODULE_5__.URL.CHARGE_MONEY);
+                break;
+            case _constants_viewConstants__WEBPACK_IMPORTED_MODULE_6__.SELECTOR.ID_STRING.ITEM_PURCHASE_TAB:
+                window.history.pushState(null, null, _constants_appContants__WEBPACK_IMPORTED_MODULE_5__.URL.PURCHASE_ITEM);
         }
         this.route();
-    };
-    AppController.prototype.route = function () {
-        var pathname = window.location.pathname;
-        if (pathname === "".concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.BASE_URL, "/")) {
-            this.manageItemController.loadPage();
-            this.appView.changeButtonColor(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.SELECTOR.ID_STRING.ITEM_MANGE_TAB);
-            return;
+    }
+    route() {
+        const { pathname } = window.location;
+        switch (pathname) {
+            case `${_constants_appContants__WEBPACK_IMPORTED_MODULE_5__.URL.BASE_URL}/${_constants_appContants__WEBPACK_IMPORTED_MODULE_5__.URL.MANAGE_ITEM}`:
+                this.manageItemController.loadPage();
+                this.appView.changeButtonColor(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_6__.SELECTOR.ID_STRING.ITEM_MANGE_TAB);
+                break;
+            case `${_constants_appContants__WEBPACK_IMPORTED_MODULE_5__.URL.BASE_URL}/${_constants_appContants__WEBPACK_IMPORTED_MODULE_5__.URL.CHARGE_MONEY}`:
+                this.chargeMoneyController.loadPage();
+                this.appView.changeButtonColor(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_6__.SELECTOR.ID_STRING.MONEY_CHARGE_TAB);
+                break;
+            case `${_constants_appContants__WEBPACK_IMPORTED_MODULE_5__.URL.BASE_URL}/${_constants_appContants__WEBPACK_IMPORTED_MODULE_5__.URL.PURCHASE_ITEM}`:
+                this.purchaseItemController.render();
+                this.appView.changeButtonColor(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_6__.SELECTOR.ID_STRING.ITEM_PURCHASE_TAB);
+                break;
+            default:
+                this.manageItemController.loadPage();
+                this.appView.changeButtonColor(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_6__.SELECTOR.ID_STRING.ITEM_MANGE_TAB);
         }
-        if (pathname === "".concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.BASE_URL, "/").concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.MANAGE_ITEM)) {
-            this.manageItemController.loadPage();
-            this.appView.changeButtonColor(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.SELECTOR.ID_STRING.ITEM_MANGE_TAB);
-            return;
-        }
-        if (pathname === "".concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.BASE_URL, "/").concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.CHARGE_MONEY)) {
-            this.chargeMoneyController.loadPage();
-            this.appView.changeButtonColor(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.SELECTOR.ID_STRING.MONEY_CHARGE_TAB);
-            return;
-        }
-        if (pathname === "".concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.BASE_URL, "/").concat(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.URL.PURCHASE_ITEM)) {
-            this.purchaseItemController.render();
-            this.appView.changeButtonColor(_constants_constants__WEBPACK_IMPORTED_MODULE_5__.SELECTOR.ID_STRING.ITEM_PURCHASE_TAB);
-        }
-    };
-    return AppController;
-}());
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AppController);
+    }
+}
 
 
 /***/ }),
@@ -770,35 +820,29 @@ var AppController = /** @class */ (function () {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ ChargeMoneyController)
 /* harmony export */ });
 /* harmony import */ var _views_chargeMoneyView__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/chargeMoneyView */ "./src/js/views/chargeMoneyView.ts");
-/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/constants */ "./src/js/constants/constants.ts");
+/* harmony import */ var _constants_appContants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/appContants */ "./src/js/constants/appContants.ts");
 
 
-var ChargeMoneyController = /** @class */ (function () {
-    function ChargeMoneyController(vendingMachine) {
+class ChargeMoneyController {
+    constructor(vendingMachine) {
         this.vendingMachine = vendingMachine;
         this.chargeMoneyView = new _views_chargeMoneyView__WEBPACK_IMPORTED_MODULE_0__["default"]();
-        this.bindEvents();
+        window.addEventListener(_constants_appContants__WEBPACK_IMPORTED_MODULE_1__.CUSTOM_EVENT.CHARGE_MONEY, this.handleChargeMoney.bind(this));
     }
-    ChargeMoneyController.prototype.bindEvents = function () {
-        window.addEventListener(_constants_constants__WEBPACK_IMPORTED_MODULE_1__.CUSTOM_EVENT.CHARGE_MONEY, this.handleChargeMoney.bind(this));
-    };
-    ChargeMoneyController.prototype.loadPage = function () {
-        var coins = this.vendingMachine.getCoins();
-        var totalMoney = this.vendingMachine.getInputMoney();
-        this.chargeMoneyView.render(coins, totalMoney);
-    };
-    ChargeMoneyController.prototype.handleChargeMoney = function (event) {
-        var inputMoney = event.detail.inputMoney;
+    loadPage() {
+        const { coins, money } = this.vendingMachine;
+        this.chargeMoneyView.render(coins, money);
+    }
+    handleChargeMoney(event) {
+        const { inputMoney } = event.detail;
         this.vendingMachine.chargeMoney(inputMoney);
-        this.chargeMoneyView.repaintCurrentMoney(this.vendingMachine.getInputMoney());
-        this.chargeMoneyView.repaintCoinsTable(this.vendingMachine.getCoins());
-    };
-    return ChargeMoneyController;
-}());
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChargeMoneyController);
+        this.chargeMoneyView.repaintCurrentMoney(this.vendingMachine.money);
+        this.chargeMoneyView.repaintCoinsTable(this.vendingMachine.coins);
+    }
+}
 
 
 /***/ }),
@@ -811,61 +855,62 @@ var ChargeMoneyController = /** @class */ (function () {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ ManageItemController)
 /* harmony export */ });
 /* harmony import */ var _views_mangeItemView__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/mangeItemView */ "./src/js/views/mangeItemView.ts");
-/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/constants */ "./src/js/constants/constants.ts");
-/* harmony import */ var _validates_validates__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../validates/validates */ "./src/js/validates/validates.ts");
+/* harmony import */ var _constants_confirmConstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/confirmConstants */ "./src/js/constants/confirmConstants.ts");
+/* harmony import */ var _constants_appContants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants/appContants */ "./src/js/constants/appContants.ts");
+/* harmony import */ var _validates_validates__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../validates/validates */ "./src/js/validates/validates.ts");
 
 
 
-var ManageItemController = /** @class */ (function () {
-    function ManageItemController(vendingMachine) {
+
+class ManageItemController {
+    constructor(vendingMachine) {
         this.vendingMachine = vendingMachine;
         this.manageItemView = new _views_mangeItemView__WEBPACK_IMPORTED_MODULE_0__["default"]();
-        this.bindEvents();
+        window.addEventListener(_constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.ADD_ITEM, this.handleAddItem.bind(this));
+        window.addEventListener(_constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.TABLE_ITEM_CHANGE, this.handleTableItemChange.bind(this));
+        window.addEventListener(_constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.TABLE_ITEM_DELETE, this.handleTableItemDelete.bind(this));
     }
-    ManageItemController.prototype.loadPage = function () {
-        var itemList = this.vendingMachine.getItems();
+    loadPage() {
+        const itemList = this.vendingMachine.items;
         this.manageItemView.render(itemList);
-    };
-    ManageItemController.prototype.bindEvents = function () {
-        window.addEventListener(_constants_constants__WEBPACK_IMPORTED_MODULE_1__.CUSTOM_EVENT.ADD_ITEM, this.handleAddItem.bind(this));
-        window.addEventListener(_constants_constants__WEBPACK_IMPORTED_MODULE_1__.CUSTOM_EVENT.TABLE_ITEM_CHANGE, this.handleTableItemChange.bind(this));
-        window.addEventListener(_constants_constants__WEBPACK_IMPORTED_MODULE_1__.CUSTOM_EVENT.TABLE_ITEM_DELETE, this.handleTableItemDelete.bind(this));
-    };
-    ManageItemController.prototype.handleAddItem = function (event) {
+    }
+    handleAddItem(event) {
         try {
-            var newItem = event.detail;
-            var items = this.vendingMachine.getItems();
-            (0,_validates_validates__WEBPACK_IMPORTED_MODULE_2__.checkDuplicatedItem)(items, newItem, null);
+            const newItem = event.detail.item;
+            const { items } = this.vendingMachine;
+            (0,_validates_validates__WEBPACK_IMPORTED_MODULE_3__.validateAddItemInput)(newItem);
+            (0,_validates_validates__WEBPACK_IMPORTED_MODULE_3__.checkDuplicatedItem)(items, newItem, null);
             this.vendingMachine.addItem(newItem);
             this.manageItemView.clearInput();
-            this.manageItemView.repaintItemTable(this.vendingMachine.getItems());
+            this.manageItemView.appendItemTableRow(newItem);
         }
         catch (error) {
             alert(error.message);
         }
-    };
-    ManageItemController.prototype.handleTableItemChange = function (event) {
+    }
+    handleTableItemChange(event) {
         try {
-            var _a = event.detail, item = _a.item, targetRowIndex = _a.targetRowIndex, $targetTableRow = _a.$targetTableRow;
-            var items = this.vendingMachine.getItems();
-            (0,_validates_validates__WEBPACK_IMPORTED_MODULE_2__.checkDuplicatedItem)(items, item, targetRowIndex);
+            const { item, targetRowIndex, $targetTableRow } = event.detail;
+            const { items } = this.vendingMachine;
+            (0,_validates_validates__WEBPACK_IMPORTED_MODULE_3__.validateAddItemInput)(item);
+            (0,_validates_validates__WEBPACK_IMPORTED_MODULE_3__.checkDuplicatedItem)(items, item, targetRowIndex);
             this.vendingMachine.changeItem(targetRowIndex, item);
             this.manageItemView.repaintItemTableRow($targetTableRow, item);
         }
         catch (error) {
             alert(error.message);
         }
-    };
-    ManageItemController.prototype.handleTableItemDelete = function (event) {
-        var item = event.detail.item;
-        this.vendingMachine.deleteItem(item);
-    };
-    return ManageItemController;
-}());
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ManageItemController);
+    }
+    handleTableItemDelete(event) {
+        const { item } = event.detail;
+        if (window.confirm(_constants_confirmConstants__WEBPACK_IMPORTED_MODULE_1__.CONFIRM_MESSAGE.DELETE)) {
+            this.vendingMachine.deleteItem(item);
+        }
+    }
+}
 
 
 /***/ }),
@@ -878,30 +923,28 @@ var ManageItemController = /** @class */ (function () {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ PurchaseItemController)
 /* harmony export */ });
 /* harmony import */ var _views_purchaseItemView__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/purchaseItemView */ "./src/js/views/purchaseItemView.ts");
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/common */ "./src/js/utils/common.ts");
 
 
-var PurchaseItemController = /** @class */ (function () {
-    function PurchaseItemController(vendingMachine) {
+class PurchaseItemController {
+    constructor(vendingMachine) {
         this.vendingMachine = vendingMachine;
         this.purchaseItemView = new _views_purchaseItemView__WEBPACK_IMPORTED_MODULE_0__["default"]();
         this.coins = { fiveHundred: 0, hundred: 0, fifty: 0, ten: 0 };
         this.inputMoney = 0;
     }
-    PurchaseItemController.prototype.render = function () {
-        var items = this.vendingMachine.getItems();
+    render() {
+        const { items } = this.vendingMachine;
         this.purchaseItemView.render(items, this.coins, this.inputMoney);
         this.bindEvent();
-    };
-    PurchaseItemController.prototype.bindEvent = function () {
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.$)('.submit-button').addEventListener('click', function (event) { return event.preventDefault(); });
-    };
-    return PurchaseItemController;
-}());
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PurchaseItemController);
+    }
+    bindEvent() {
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.$)('.submit-button').addEventListener('click', event => event.preventDefault());
+    }
+}
 
 
 /***/ }),
@@ -917,24 +960,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "sectionTemplate": () => (/* binding */ sectionTemplate),
 /* harmony export */   "chargeMoneyTemplate": () => (/* binding */ chargeMoneyTemplate)
 /* harmony export */ });
-/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/constants */ "./src/js/constants/constants.ts");
+/* harmony import */ var _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/vendingMachineConstants */ "./src/js/constants/vendingMachineConstants.ts");
 
-var sectionTemplate = {
-    inputContainer: function (currentMoney) {
-        return "\n    <section class=\"input-container\">\n      <h2 hidden>\uC794\uB3C8 \uCDA9\uC804</h2>\n      <form id=\"charge-money-form\">\n      <label>\uC790\uD310\uAE30\uAC00 \uBCF4\uC720\uD560 \uAE08\uC561\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694.</label>\n      <div>\n       <input class=\"charge-money-input\" placeholder=\"\uAE08\uC561\" type=\"number\" />\n        <button class=\"submit-button\">\uCDA9\uC804</button>\n       </div>\n      </form>\n      <p>\uD604\uC7AC \uBCF4\uC720 \uAE08\uC561: <span id=\"current-money\">".concat(currentMoney, "</span>\uC6D0</p>\n    </section>\n    ");
+const sectionTemplate = {
+    inputContainer(currentMoney) {
+        return `
+    <section class="input-container">
+      <h2 hidden>잔돈 충전</h2>
+      <form id="charge-money-form">
+      <label>자판기가 보유할 금액을 입력해주세요.</label>
+      <div>
+       <input class="charge-money-input" placeholder="금액" type="number" />
+        <button class="submit-button">충전</button>
+       </div>
+      </form>
+      <p>현재 보유 금액: <span id="current-money">${currentMoney}</span>원</p>
+    </section>
+    `;
     },
-    tableContainer: function (coins) {
-        return "\n    <section class=\"table-container\">\n      <h2>\uC790\uD310\uAE30\uAC00 \uBCF4\uC720\uD55C \uB3D9\uC804</h2>\n      <table class=\"coin-table\">\n      ".concat(this.coinTableContent(coins), "\n      </table>\n    </section>");
+    tableContainer(coins) {
+        return `
+    <section class="table-container">
+      <h2>자판기가 보유한 동전</h2>
+      <table class="coin-table">
+      ${this.coinTableContent(coins)}
+      </table>
+    </section>`;
     },
-    coinTableContent: function (coins) {
-        return "\n    <tr>\n      <th>\uB3D9\uC804</th>\n      <th>\uAC1C\uC218</th>\n    </tr>\n    ".concat(Object.keys(coins)
-            .map(function (coinKey) {
-            return "\n        <tr>\n          <td>".concat(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.COINS[coinKey], "\uC6D0</td>\n          <td>").concat(coins[coinKey], "\uAC1C</td>\n        </tr>\n      ");
+    coinTableContent(coins) {
+        return `
+    <tr>
+      <th>동전</th>
+      <th>개수</th>
+    </tr>
+    ${Object.keys(coins)
+            .map(coinKey => {
+            return `
+        <tr>
+          <td>${_constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.COINS[coinKey]}원</td>
+          <td>${coins[coinKey]}개</td>
+        </tr>
+      `;
         })
-            .join(''), "\n      ");
-    }
+            .join('')}
+      `;
+    },
 };
-var chargeMoneyTemplate = function (coins, currentMoney) { return "\n  ".concat(sectionTemplate.inputContainer(currentMoney), "\n  ").concat(sectionTemplate.tableContainer(coins), "\n"); };
+const chargeMoneyTemplate = (coins, currentMoney) => `
+  ${sectionTemplate.inputContainer(currentMoney)}
+  ${sectionTemplate.tableContainer(coins)}
+`;
 
 
 /***/ }),
@@ -949,7 +1024,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "initialTemplate": () => (/* binding */ initialTemplate)
 /* harmony export */ });
-var initialTemplate = "\n  <h1>\uD83C\uDF7F \uC790\uD310\uAE30 \uD83C\uDF7F</h1>\n  <div class=\"nav-container\">\n    <button id=\"item-manage-tab\" class=\"nav-button nav-button-clicked\">\uC0C1\uD488 \uAD00\uB9AC</button>\n    <button id=\"money-charge-tab\" class=\"nav-button\">\uC794\uB3C8 \uCDA9\uC804</button>\n    <button id=\"item-purchase-tab\" class=\"nav-button\">\uC0C1\uD488 \uAD6C\uB9E4</button>\n  </div>\n  <div id=\"content\"></div>\n";
+const initialTemplate = `
+  <h1>🍿 자판기 🍿</h1>
+  <div class="nav-container">
+    <button id="item-manage-tab" class="nav-button nav-button-clicked">상품 관리</button>
+    <button id="money-charge-tab" class="nav-button">잔돈 충전</button>
+    <button id="item-purchase-tab" class="nav-button">상품 구매</button>
+  </div>
+  <div id="content"></div>
+`;
 
 
 /***/ }),
@@ -965,22 +1048,71 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "sectionTemplate": () => (/* binding */ sectionTemplate),
 /* harmony export */   "manageItemTemplate": () => (/* binding */ manageItemTemplate)
 /* harmony export */ });
-var sectionTemplate = {
-    inputContainer: function () {
-        return "\n      <section class=\"input-container\">\n      <h2 hidden>\uC0C1\uD488 \uC815\uBCF4 \uC785\uB825</h2>\n      <form id=\"add-item-form\">\n        <label>\uCD94\uAC00\uD560 \uC0C1\uD488 \uC815\uBCF4\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694.</label>\n        <div>\n          <input id=\"add-item-name\" class=\"add-item-input\" placeholder=\"\uC0C1\uD488\uBA85\" />\n          <input id=\"add-item-price\" class=\"add-item-input\" placeholder=\"\uAC00\uACA9\" type=\"number\"/>\n          <input id=\"add-item-quantity\" class=\"add-item-input\" placeholder=\"\uC218\uB7C9\" type=\"number\"/>\n          <button class=\"submit-button\">\uCD94\uAC00</button>\n        </div>\n      </form>\n      </section>\n    ";
+const sectionTemplate = {
+    inputContainer() {
+        return `
+      <section class="input-container">
+      <h2 hidden>상품 정보 입력</h2>
+      <form id="add-item-form">
+        <label>추가할 상품 정보를 입력해주세요.</label>
+        <div>
+          <input id="add-item-name" class="add-item-input" placeholder="상품명" />
+          <input id="add-item-price" class="add-item-input" placeholder="가격" type="number"/>
+          <input id="add-item-quantity" class="add-item-input" placeholder="수량" type="number"/>
+          <button class="submit-button">추가</button>
+        </div>
+      </form>
+      </section>
+    `;
     },
-    tableContainer: function (items) {
-        var _this = this;
-        return "\n    <section class=\"table-container\">\n      <h2>\uC0C1\uD488 \uD604\uD669</h2>\n      <table class=\"item-table\">\n        <tr>\n          <th>\uC0C1\uD488\uBA85</th>\n          <th>\uAC00\uACA9</th>\n          <th>\uC218\uB7C9</th>\n          <th></th>\n        </tr>\n         ".concat(items.map(function (item) { return _this.normalTableContainer(item); }).join(''), "\n      </table>\n    </section>\n    ");
+    tableContainer(items) {
+        return `
+    <section class="table-container">
+      <h2>상품 현황</h2>
+      <table class="item-table">
+        <tbody class="item-table-body">
+        <tr>
+          <th>상품명</th>
+          <th>가격</th>
+          <th>수량</th>
+          <th></th>
+        </tr>
+         ${items.map(item => this.normalTableRow(item)).join('')}
+         </tbody>
+      </table>
+    </section>
+    `;
     },
-    normalTableContainer: function (item) {
-        return "\n    <tr>\n      <td class=\"table-item-name\">".concat(item.name, "</td>\n      <td class=\"table-item-price\">").concat(item.price, "</td>\n      <td class=\"table-item-quantity\">").concat(item.quantity, "</td>\n      <td class=\"item-table-button-container\">\n        <button class=\"item-table-change-button\">\uC218\uC815</button>\n        <button class=\"item-table-delete-button\">\uC0AD\uC81C</button>\n      </td>\n    </tr>\n    ");
+    normalTableRow(item) {
+        return `
+    <tr>
+      <td class="table-item-name">${item.name}</td>
+      <td class="table-item-price">${item.price}</td>
+      <td class="table-item-quantity">${item.quantity}</td>
+      <td class="item-table-button-container">
+        <button class="item-table-change-button" data-name=${item.name} data-price=${item.price} data-quantity=${item.quantity} >수정</button>
+        <button class="item-table-delete-button" data-name=${item.name} data-price=${item.price} data-quantity=${item.quantity} >삭제</button>
+      </td>
+    </tr>
+    `;
     },
-    changeTableContainer: function (item) {
-        return "\n    <tr>\n      <td><input class=\"table-item-input table-item-input-name\" value=\"".concat(item.name, "\" placeholder=\"\uC0C1\uD488\uBA85\"></input></td>\n      <td><input class=\"table-item-input table-item-input-price\" value=\"").concat(item.price, "\" placeholder=\"\uAC00\uACA9\" type=\"number\"></input></td>\n      <td><input class=\"table-item-input table-item-input-quantity\" value=\"").concat(item.quantity, "\" placeholder=\"\uC218\uB7C9\" type=\"number\"></input></td>\n      <td>\n       <button class=\"item-table-confirm-button\">\uD655\uC778</button>\n      </td>\n    </tr>\n");
-    }
+    changeTableRow(item) {
+        return `
+    <tr>
+      <td><input class="table-item-input table-item-input-name" value="${item.name}" placeholder="상품명"></input></td>
+      <td><input class="table-item-input table-item-input-price" value="${item.price}" placeholder="가격" type="number"></input></td>
+      <td><input class="table-item-input table-item-input-quantity" value="${item.quantity}" placeholder="수량" type="number"></input></td>
+      <td>
+       <button class="item-table-confirm-button">확인</button>
+      </td>
+    </tr>
+`;
+    },
 };
-var manageItemTemplate = function (items) { return "\n  ".concat(sectionTemplate.inputContainer(), "\n  ").concat(sectionTemplate.tableContainer(items), "\n"); };
+const manageItemTemplate = (items) => `
+  ${sectionTemplate.inputContainer()}
+  ${sectionTemplate.tableContainer(items)}
+`;
 
 
 /***/ }),
@@ -995,28 +1127,82 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "purchaseItemTemplate": () => (/* binding */ purchaseItemTemplate)
 /* harmony export */ });
-/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/constants */ "./src/js/constants/constants.ts");
+/* harmony import */ var _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/vendingMachineConstants */ "./src/js/constants/vendingMachineConstants.ts");
 
-var sectionTemplate = {
-    inputContainer: function (inputMoney) {
-        return "\n    <section class=\"input-container\">\n      <h2 hidden>\uC0C1\uD488 \uAD6C\uB9E4</h2>\n      <form>\n        <label>\uC0C1\uD488\uC744 \uAD6C\uB9E4\uD560 \uAE08\uC561\uC744 \uD22C\uC785\uD574\uC8FC\uC138\uC694</label>\n        <div>\n          <input class=\"charge-money-input\" placeholder=\"\uAE08\uC561\" />\n          <button class=\"submit-button\">\uCDA9\uC804</button>\n        </div>\n      </form>\n      <p>\uD22C\uC785\uD55C \uAE08\uC561: <span>".concat(inputMoney, "</span>\uC6D0</p>\n    </section>\n    ");
+const sectionTemplate = {
+    inputContainer(inputMoney) {
+        return `
+    <section class="input-container">
+      <h2 hidden>상품 구매</h2>
+      <form>
+        <label>상품을 구매할 금액을 투입해주세요</label>
+        <div>
+          <input class="charge-money-input" placeholder="금액" />
+          <button class="submit-button">충전</button>
+        </div>
+      </form>
+      <p>투입한 금액: <span>${inputMoney}</span>원</p>
+    </section>
+    `;
     },
-    itemTableContainer: function (items) {
-        return "\n    <section class=\"table-container\">\n      <h2>\uAD6C\uB9E4 \uAC00\uB2A5 \uC0C1\uD488 \uD604\uD669</h2>\n      <table class=\"item-table\">\n        <tr>\n          <th>\uC0C1\uD488\uBA85</th>\n          <th>\uAC00\uACA9</th>\n          <th>\uC218\uB7C9</th>\n          <th>\uAD6C\uB9E4</th>\n        </tr>\n        ".concat(items
-            .map(function (item) {
-            return "\n          <tr>\n            <td>".concat(item.name, "</td>\n            <td>").concat(item.price, "</td>\n            <td>").concat(item.quantity, "</td>\n            <td>\n              <button class=\"item-table-purchase-button\">\uAD6C\uB9E4</button>\n            </td>\n          </tr>");
+    itemTableContainer(items) {
+        return `
+    <section class="table-container">
+      <h2>구매 가능 상품 현황</h2>
+      <table class="item-table">
+        <tr>
+          <th>상품명</th>
+          <th>가격</th>
+          <th>수량</th>
+          <th>구매</th>
+        </tr>
+        ${items
+            .map(item => {
+            return `
+          <tr>
+            <td>${item.name}</td>
+            <td>${item.price}</td>
+            <td>${item.quantity}</td>
+            <td>
+              <button class="item-table-purchase-button">구매</button>
+            </td>
+          </tr>`;
         })
-            .join(''), "\n      </table>\n    </section>\n    ");
+            .join('')}
+      </table>
+    </section>
+    `;
     },
-    coinTableContainer: function (coins) {
-        return "\n    <section class=\"table-container\">\n      <h2>\uC794\uB3C8 \uBC18\uD658</h2>\n      <table class=\"coin-table\">\n          <tr>\n            <th>\uB3D9\uC804</th>\n            <th>\uAC1C\uC218</th>\n          </tr>\n          ".concat(Object.keys(coins)
-            .map(function (coinKey) {
-            return "\n              <tr>\n                <td>".concat(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.COINS[coinKey], "\uC6D0</td>\n                <td>").concat(coins[coinKey], "\uAC1C</td>\n              </tr>\n            ");
+    coinTableContainer(coins) {
+        return `
+    <section class="table-container">
+      <h2>잔돈 반환</h2>
+      <table class="coin-table">
+          <tr>
+            <th>동전</th>
+            <th>개수</th>
+          </tr>
+          ${Object.keys(coins)
+            .map(coinKey => {
+            return `
+              <tr>
+                <td>${_constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.COINS[coinKey]}원</td>
+                <td>${coins[coinKey]}개</td>
+              </tr>
+            `;
         })
-            .join(''), "\n        </table>\n      <button class=\"return-money-button\">\uBC18\uD658</button>\n    </section>\n    ");
-    }
+            .join('')}
+        </table>
+      <button class="return-money-button">반환</button>
+    </section>
+    `;
+    },
 };
-var purchaseItemTemplate = function (items, coins, inputMoney) { return "\n  ".concat(sectionTemplate.inputContainer(inputMoney), "\n  ").concat(sectionTemplate.itemTableContainer(items), "\n  ").concat(sectionTemplate.coinTableContainer(coins), "\n"); };
+const purchaseItemTemplate = (items, coins, inputMoney) => `
+  ${sectionTemplate.inputContainer(inputMoney)}
+  ${sectionTemplate.itemTableContainer(items)}
+  ${sectionTemplate.coinTableContainer(coins)}
+`;
 
 
 /***/ }),
@@ -1031,13 +1217,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "generateRandom": () => (/* binding */ generateRandom),
 /* harmony export */   "$": () => (/* binding */ $),
-/* harmony export */   "$$": () => (/* binding */ $$)
+/* harmony export */   "$$": () => (/* binding */ $$),
+/* harmony export */   "emit": () => (/* binding */ emit)
 /* harmony export */ });
 function generateRandom(max) {
     return Math.floor(Math.random() * (max + 1));
 }
-var $ = function (selector) { return document.querySelector(selector); };
-var $$ = function (selector) { return document.querySelectorAll(selector); };
+const $ = selector => document.querySelector(selector);
+const $$ = selector => document.querySelectorAll(selector);
+const emit = ({ target = window, eventName, detail }) => {
+    const event = new CustomEvent(eventName, { detail });
+    target.dispatchEvent(event);
+};
 
 
 /***/ }),
@@ -1054,57 +1245,169 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "validateInputMoney": () => (/* binding */ validateInputMoney),
 /* harmony export */   "checkDuplicatedItem": () => (/* binding */ checkDuplicatedItem)
 /* harmony export */ });
-/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/constants */ "./src/js/constants/constants.ts");
+/* harmony import */ var _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/vendingMachineConstants */ "./src/js/constants/vendingMachineConstants.ts");
+/* harmony import */ var _constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/errorConstants */ "./src/js/constants/errorConstants.ts");
 
-var validateAddItemInput = function (_a) {
-    var name = _a.name, price = _a.price, quantity = _a.quantity;
+
+const validateAddItemInput = ({ name, price, quantity }) => {
     if (name.length === 0) {
-        throw new Error(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.ERROR_MESSAGE.ITEM_NAME.EMPTY_NAME);
+        throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.ITEM_NAME.EMPTY_NAME);
     }
-    if (name.length > _constants_constants__WEBPACK_IMPORTED_MODULE_0__.ITEM.NAME.MAX_LENGTH) {
-        throw new Error(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.ERROR_MESSAGE.ITEM_NAME.OVER_MAX_LENGTH);
+    if (name.length > _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.ITEM.NAME.MAX_LENGTH) {
+        throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.ITEM_NAME.OVER_MAX_LENGTH);
     }
     if (!Number.isInteger(price)) {
-        throw new Error(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.ERROR_MESSAGE.ITEM_PRICE.NOT_INTEGER);
+        throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.ITEM_PRICE.NOT_INTEGER);
     }
-    if (price < _constants_constants__WEBPACK_IMPORTED_MODULE_0__.ITEM.PRICE.MIN) {
-        throw new Error(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.ERROR_MESSAGE.ITEM_PRICE.UNDER_MIN);
+    if (price < _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.ITEM.PRICE.MIN) {
+        throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.ITEM_PRICE.UNDER_MIN);
     }
-    if (price > _constants_constants__WEBPACK_IMPORTED_MODULE_0__.ITEM.PRICE.MAX) {
-        throw new Error(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.ERROR_MESSAGE.ITEM_PRICE.OVER_MAX);
+    if (price > _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.ITEM.PRICE.MAX) {
+        throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.ITEM_PRICE.OVER_MAX);
     }
-    if (price % _constants_constants__WEBPACK_IMPORTED_MODULE_0__.ITEM.PRICE.UNIT !== 0) {
-        throw new Error(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.ERROR_MESSAGE.ITEM_PRICE.INVALID_UNIT);
+    if (price % _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.ITEM.PRICE.UNIT !== 0) {
+        throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.ITEM_PRICE.INVALID_UNIT);
     }
     if (!Number.isInteger(quantity)) {
-        throw new Error(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.ERROR_MESSAGE.ITEM_QUANTITY.NOT_INTEGER);
+        throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.ITEM_QUANTITY.NOT_INTEGER);
     }
-    if (quantity <= _constants_constants__WEBPACK_IMPORTED_MODULE_0__.ITEM.QUANTITY.MIN) {
-        throw new Error(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.ERROR_MESSAGE.ITEM_QUANTITY.UNDER_MIN);
+    if (quantity <= _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.ITEM.QUANTITY.MIN) {
+        throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.ITEM_QUANTITY.UNDER_MIN);
     }
-    if (quantity > _constants_constants__WEBPACK_IMPORTED_MODULE_0__.ITEM.QUANTITY.MAX) {
-        throw new Error(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.ERROR_MESSAGE.ITEM_QUANTITY.OVER_MAX);
+    if (quantity > _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.ITEM.QUANTITY.MAX) {
+        throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.ITEM_QUANTITY.OVER_MAX);
     }
 };
-var validateInputMoney = function (inputMoney) {
+const validateInputMoney = (inputMoney) => {
     if (!Number.isInteger(inputMoney)) {
-        throw new Error(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.ERROR_MESSAGE.INPUT_MONEY.NOT_INTEGER);
+        throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.INPUT_MONEY.NOT_INTEGER);
     }
-    if (inputMoney <= _constants_constants__WEBPACK_IMPORTED_MODULE_0__.MONEY.MIN) {
-        throw new Error(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.ERROR_MESSAGE.INPUT_MONEY.UNDER_MIN);
+    if (inputMoney <= _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.MONEY.MIN) {
+        throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.INPUT_MONEY.UNDER_MIN);
     }
-    if (inputMoney > _constants_constants__WEBPACK_IMPORTED_MODULE_0__.MONEY.MAX) {
-        throw new Error(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.ERROR_MESSAGE.INPUT_MONEY.OVER_MAX);
+    if (inputMoney > _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.MONEY.MAX) {
+        throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.INPUT_MONEY.OVER_MAX);
     }
-    if (inputMoney % _constants_constants__WEBPACK_IMPORTED_MODULE_0__.MONEY.UNIT !== 0) {
-        throw new Error(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.ERROR_MESSAGE.INPUT_MONEY.INVALID_UNIT);
-    }
-};
-var checkDuplicatedItem = function (items, newItem, targetIndex) {
-    if (items.find(function (item, index) { return index !== targetIndex && item.name === newItem.name; })) {
-        throw new Error(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.ERROR_MESSAGE.ITEM_NAME.DUPLICATE_ITEM);
+    if (inputMoney % _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.MONEY.UNIT !== 0) {
+        throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.INPUT_MONEY.INVALID_UNIT);
     }
 };
+const checkDuplicatedItem = (items, newItem, targetIndex) => {
+    if (items.find((item, index) => index !== targetIndex && item.name === newItem.name)) {
+        throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.ITEM_NAME.DUPLICATE_ITEM);
+    }
+};
+
+
+/***/ }),
+
+/***/ "./src/js/vendingMachine/coinManager.ts":
+/*!**********************************************!*\
+  !*** ./src/js/vendingMachine/coinManager.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ CoinManager)
+/* harmony export */ });
+/* harmony import */ var _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/vendingMachineConstants */ "./src/js/constants/vendingMachineConstants.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/common */ "./src/js/utils/common.ts");
+
+
+class CoinManager {
+    constructor() {
+        this._coins = { fiveHundred: 0, hundred: 0, fifty: 0, ten: 0 };
+        this._money = 0;
+    }
+    get coins() {
+        return this._coins;
+    }
+    get money() {
+        return this._money;
+    }
+    chargeCoin(inputMoney) {
+        this._coins = this.generateRandomCoins(inputMoney);
+        this._money += inputMoney;
+    }
+    generateRandomCoins(money) {
+        const newCoins = this._coins;
+        let restMoney = money;
+        Object.keys(newCoins).forEach(key => {
+            if (key === 'ten') {
+                newCoins[key] += restMoney / _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.COINS[key];
+                return;
+            }
+            const randomNumber = (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.generateRandom)(Math.floor(restMoney / _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.COINS[key]));
+            restMoney -= randomNumber * _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.COINS[key];
+            newCoins[key] += randomNumber;
+        });
+        return newCoins;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/js/vendingMachine/item.ts":
+/*!***************************************!*\
+  !*** ./src/js/vendingMachine/item.ts ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Item)
+/* harmony export */ });
+class Item {
+    constructor(name, price, quantity) {
+        this._name = name;
+        this._price = price;
+        this._quantity = quantity;
+    }
+    get name() {
+        return this._name;
+    }
+    get price() {
+        return this._price;
+    }
+    get quantity() {
+        return this._quantity;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/js/vendingMachine/itemManager.ts":
+/*!**********************************************!*\
+  !*** ./src/js/vendingMachine/itemManager.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ItemManager)
+/* harmony export */ });
+/* harmony import */ var _item__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./item */ "./src/js/vendingMachine/item.ts");
+
+class ItemManager {
+    constructor() {
+        this._items = [];
+    }
+    get items() {
+        return this._items;
+    }
+    addItem({ name, price, quantity }) {
+        this._items.push(new _item__WEBPACK_IMPORTED_MODULE_0__["default"](name, price, quantity));
+    }
+    changeItem(index, { name, price, quantity }) {
+        this._items[index] = new _item__WEBPACK_IMPORTED_MODULE_0__["default"](name, price, quantity);
+    }
+    deleteItem(targetItem) {
+        this._items = this._items.filter(item => item.name !== targetItem.name);
+    }
+}
 
 
 /***/ }),
@@ -1117,101 +1420,39 @@ var checkDuplicatedItem = function (items, newItem, targetIndex) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ VendingMachine)
 /* harmony export */ });
-/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/constants */ "./src/js/constants/constants.ts");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/common */ "./src/js/utils/common.ts");
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
+/* harmony import */ var _coinManager__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./coinManager */ "./src/js/vendingMachine/coinManager.ts");
+/* harmony import */ var _itemManager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./itemManager */ "./src/js/vendingMachine/itemManager.ts");
 
 
-var VendingMachine = /** @class */ (function () {
-    function VendingMachine() {
-        this.items = [];
-        this.coins = { fiveHundred: 0, hundred: 0, fifty: 0, ten: 0 };
-        this.inputMoney = 0;
+class VendingMachine {
+    constructor() {
+        this.itemManager = new _itemManager__WEBPACK_IMPORTED_MODULE_1__["default"]();
+        this.coinManager = new _coinManager__WEBPACK_IMPORTED_MODULE_0__["default"]();
     }
-    VendingMachine.prototype.getItems = function () {
-        return JSON.parse(JSON.stringify(this.items));
-    };
-    VendingMachine.prototype.setItems = function (newItems) {
-        this.items = newItems;
-    };
-    VendingMachine.prototype.getCoins = function () {
-        return __assign({}, this.coins);
-    };
-    VendingMachine.prototype.setCoins = function (newCoins) {
-        this.coins = newCoins;
-    };
-    VendingMachine.prototype.getInputMoney = function () {
-        return this.inputMoney;
-    };
-    VendingMachine.prototype.setInputMoney = function (inputMoney) {
-        this.inputMoney = inputMoney;
-    };
-    VendingMachine.prototype.getTotalMoney = function (coins) {
-        var totalMoney = 0;
-        Object.keys(coins).forEach(function (coinKey) {
-            totalMoney += coins[coinKey] * _constants_constants__WEBPACK_IMPORTED_MODULE_0__.COINS[coinKey];
-        });
-        return totalMoney;
-    };
-    VendingMachine.prototype.addItem = function (_a) {
-        var name = _a.name, price = _a.price, quantity = _a.quantity;
-        var newItems = __spreadArray(__spreadArray([], this.items, true), [{ name: name, price: price, quantity: quantity }], false);
-        this.setItems(newItems);
-    };
-    VendingMachine.prototype.deleteItem = function (targetItem) {
-        var newItems = this.getItems().filter(function (item) { return item.name !== targetItem.name; });
-        this.setItems(newItems);
-    };
-    VendingMachine.prototype.changeItem = function (index, _a) {
-        var name = _a.name, price = _a.price, quantity = _a.quantity;
-        var newItems = this.getItems();
-        newItems[index] = { name: name, price: price, quantity: quantity };
-        this.setItems(newItems);
-    };
-    VendingMachine.prototype.generateRandomCoins = function (money) {
-        var newCoins = this.getCoins();
-        var restMoney = money;
-        Object.keys(newCoins).forEach(function (key) {
-            if (key === 'ten') {
-                newCoins[key] += restMoney / _constants_constants__WEBPACK_IMPORTED_MODULE_0__.COINS[key];
-                return;
-            }
-            var randomNumber = (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.generateRandom)(Math.floor(restMoney / _constants_constants__WEBPACK_IMPORTED_MODULE_0__.COINS[key]));
-            restMoney -= randomNumber * _constants_constants__WEBPACK_IMPORTED_MODULE_0__.COINS[key];
-            newCoins[key] += randomNumber;
-        });
-        return newCoins;
-    };
-    VendingMachine.prototype.chargeMoney = function (money) {
-        var newCoins = this.generateRandomCoins(money);
-        var newMoney = this.getInputMoney() + money;
-        this.setCoins(newCoins);
-        this.setInputMoney(newMoney);
-    };
-    return VendingMachine;
-}());
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (VendingMachine);
+    get items() {
+        return this.itemManager.items;
+    }
+    get coins() {
+        return this.coinManager.coins;
+    }
+    get money() {
+        return this.coinManager.money;
+    }
+    addItem(item) {
+        this.itemManager.addItem(item);
+    }
+    changeItem(index, item) {
+        this.itemManager.changeItem(index, item);
+    }
+    deleteItem(targetItem) {
+        this.itemManager.deleteItem(targetItem);
+    }
+    chargeMoney(inputMoney) {
+        this.coinManager.chargeCoin(inputMoney);
+    }
+}
 
 
 /***/ }),
@@ -1224,43 +1465,37 @@ var VendingMachine = /** @class */ (function () {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ AppView)
 /* harmony export */ });
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/common */ "./src/js/utils/common.ts");
 /* harmony import */ var _templates_initialTemplate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../templates/initialTemplate */ "./src/js/templates/initialTemplate.ts");
-/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants/constants */ "./src/js/constants/constants.ts");
+/* harmony import */ var _constants_appContants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants/appContants */ "./src/js/constants/appContants.ts");
+/* harmony import */ var _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants/viewConstants */ "./src/js/constants/viewConstants.ts");
 
 
 
-var AppView = /** @class */ (function () {
-    function AppView() {
-        this.$app = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_2__.SELECTOR.ID.APP);
-        this.render();
-        this.bindEvents();
-    }
-    AppView.prototype.render = function () {
+
+class AppView {
+    constructor() {
+        this.$app = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.APP);
         this.$app.insertAdjacentHTML('beforeend', _templates_initialTemplate__WEBPACK_IMPORTED_MODULE_1__.initialTemplate);
-    };
-    AppView.prototype.bindEvents = function () {
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_2__.SELECTOR.CLASS.NAV_CONTAINER).addEventListener('click', this.handleClickNavButton.bind(this));
-    };
-    AppView.prototype.handleClickNavButton = function (event) {
-        var $navButton = event.target;
-        var targetButtonId = $navButton.id;
-        this.changeButtonColor(targetButtonId);
-        window.dispatchEvent(new CustomEvent(_constants_constants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.ROUTE_CHANGE, { detail: { $navButton: $navButton } }));
-    };
-    AppView.prototype.changeButtonColor = function (targetButtonId) {
-        var $navButtons = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$$)(_constants_constants__WEBPACK_IMPORTED_MODULE_2__.SELECTOR.CLASS.NAV_BUTTON);
-        $navButtons.forEach(function ($navButton) {
-            return $navButton.id === targetButtonId
-                ? $navButton.classList.add(_constants_constants__WEBPACK_IMPORTED_MODULE_2__.SELECTOR.CLASS_STRING.NAV_BUTTON_CLICKED)
-                : $navButton.classList.remove(_constants_constants__WEBPACK_IMPORTED_MODULE_2__.SELECTOR.CLASS_STRING.NAV_BUTTON_CLICKED);
-        });
-    };
-    return AppView;
-}());
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AppView);
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.NAV_CONTAINER).addEventListener('click', this.handleClickNavButton.bind(this));
+    }
+    handleClickNavButton(event) {
+        const $navButton = event.target;
+        const targetButtonId = $navButton.id;
+        if (!$navButton.classList.contains(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.NAV_BUTTON_CLICKED)) {
+            this.changeButtonColor(targetButtonId);
+            window.dispatchEvent(new CustomEvent(_constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.ROUTE_CHANGE, { detail: { $navButton } }));
+        }
+    }
+    changeButtonColor(targetButtonId) {
+        const $navButtons = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.NAV_BUTTON);
+        $navButtons.forEach($navButton => $navButton.id === targetButtonId
+            ? $navButton.classList.add(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.NAV_BUTTON_CLICKED)
+            : $navButton.classList.remove(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.NAV_BUTTON_CLICKED));
+    }
+}
 
 
 /***/ }),
@@ -1273,53 +1508,53 @@ var AppView = /** @class */ (function () {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ ChargeMoneyView)
 /* harmony export */ });
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/common */ "./src/js/utils/common.ts");
 /* harmony import */ var _templates_chareMoneyTemplate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../templates/chareMoneyTemplate */ "./src/js/templates/chareMoneyTemplate.ts");
 /* harmony import */ var _validates_validates__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../validates/validates */ "./src/js/validates/validates.ts");
-/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants/constants */ "./src/js/constants/constants.ts");
+/* harmony import */ var _constants_appContants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants/appContants */ "./src/js/constants/appContants.ts");
+/* harmony import */ var _constants_viewConstants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../constants/viewConstants */ "./src/js/constants/viewConstants.ts");
 
 
 
 
-var ChargeMoneyView = /** @class */ (function () {
-    function ChargeMoneyView() {
-        this.$content = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.CONTENT);
+
+class ChargeMoneyView {
+    constructor() {
+        this.$content = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_4__.SELECTOR.ID.CONTENT);
     }
-    ChargeMoneyView.prototype.bindEvents = function () {
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.CHARGE_MONEY_FORM).addEventListener('submit', this.handleSubmitChargeMoney.bind(this));
-    };
-    ChargeMoneyView.prototype.handleSubmitChargeMoney = function (event) {
+    render(coins, money) {
+        this.$content.replaceChildren();
+        this.$content.insertAdjacentHTML('beforeend', (0,_templates_chareMoneyTemplate__WEBPACK_IMPORTED_MODULE_1__.chargeMoneyTemplate)(coins, money));
+        this.bindEvents();
+    }
+    bindEvents() {
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_4__.SELECTOR.ID.CHARGE_MONEY_FORM).addEventListener('submit', this.handleSubmitChargeMoney.bind(this));
+    }
+    handleSubmitChargeMoney(event) {
         try {
             event.preventDefault();
-            var inputMoney = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.CHARGE_MONEY_INPUT).valueAsNumber;
+            const inputMoney = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_4__.SELECTOR.CLASS.CHARGE_MONEY_INPUT).valueAsNumber;
             (0,_validates_validates__WEBPACK_IMPORTED_MODULE_2__.validateInputMoney)(inputMoney);
             this.clearInput();
-            window.dispatchEvent(new CustomEvent(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.CUSTOM_EVENT.CHARGE_MONEY, { detail: { inputMoney: inputMoney } }));
+            window.dispatchEvent(new CustomEvent(_constants_appContants__WEBPACK_IMPORTED_MODULE_3__.CUSTOM_EVENT.CHARGE_MONEY, { detail: { inputMoney } }));
         }
         catch (error) {
             alert(error.message);
         }
-    };
-    ChargeMoneyView.prototype.render = function (coins, totalMoney) {
-        this.$content.replaceChildren();
-        this.$content.insertAdjacentHTML('beforeend', (0,_templates_chareMoneyTemplate__WEBPACK_IMPORTED_MODULE_1__.chargeMoneyTemplate)(coins, totalMoney));
-        this.bindEvents();
-    };
-    ChargeMoneyView.prototype.clearInput = function () {
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.CHARGE_MONEY_INPUT).value = '';
-    };
-    ChargeMoneyView.prototype.repaintCurrentMoney = function (money) {
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.CURRENT_MONEY).textContent = money;
-    };
-    ChargeMoneyView.prototype.repaintCoinsTable = function (coins) {
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.COIN_TABLE).replaceChildren();
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.COIN_TABLE).insertAdjacentHTML('beforeend', _templates_chareMoneyTemplate__WEBPACK_IMPORTED_MODULE_1__.sectionTemplate.coinTableContent(coins));
-    };
-    return ChargeMoneyView;
-}());
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChargeMoneyView);
+    }
+    clearInput() {
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_4__.SELECTOR.CLASS.CHARGE_MONEY_INPUT).value = '';
+    }
+    repaintCurrentMoney(money) {
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_4__.SELECTOR.ID.CURRENT_MONEY).textContent = money;
+    }
+    repaintCoinsTable(coins) {
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_4__.SELECTOR.CLASS.COIN_TABLE).replaceChildren();
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_4__.SELECTOR.CLASS.COIN_TABLE).insertAdjacentHTML('beforeend', _templates_chareMoneyTemplate__WEBPACK_IMPORTED_MODULE_1__.sectionTemplate.coinTableContent(coins));
+    }
+}
 
 
 /***/ }),
@@ -1332,137 +1567,96 @@ var ChargeMoneyView = /** @class */ (function () {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ ManageItemView)
 /* harmony export */ });
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/common */ "./src/js/utils/common.ts");
 /* harmony import */ var _templates_manageItemTemplate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../templates/manageItemTemplate */ "./src/js/templates/manageItemTemplate.ts");
-/* harmony import */ var _validates_validates__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../validates/validates */ "./src/js/validates/validates.ts");
-/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants/constants */ "./src/js/constants/constants.ts");
+/* harmony import */ var _constants_appContants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants/appContants */ "./src/js/constants/appContants.ts");
+/* harmony import */ var _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants/viewConstants */ "./src/js/constants/viewConstants.ts");
 
 
 
 
-var ManageItemView = /** @class */ (function () {
-    function ManageItemView() {
-        this.$content = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.CONTENT);
+class ManageItemView {
+    constructor() {
+        this.$content = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.CONTENT);
     }
-    ManageItemView.prototype.bindSubmitEvent = function () {
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ADD_ITEM_FORM).addEventListener('submit', this.handleSubmitAddItem.bind(this));
-    };
-    ManageItemView.prototype.bindChangeClickEvents = function () {
-        var _this = this;
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.ITEM_TABLE_CHANGE_BUTTON).forEach(function (button) {
-            _this.bindTargetChangeClickEvent(button);
-        });
-    };
-    ManageItemView.prototype.bindDeleteClickEvents = function () {
-        var _this = this;
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.ITEM_TABLE_DELETE_BUTTON).forEach(function (button) {
-            return _this.bindTargetDeleteClickEvent(button);
-        });
-    };
-    ManageItemView.prototype.bindTargetChangeClickEvent = function ($targetButton) {
-        var _this = this;
-        $targetButton.addEventListener('click', function () {
-            var $targetTableRow = $targetButton.closest('tr');
-            var item = _this.getItemFromTargetTableRow($targetTableRow);
-            $targetTableRow.replaceChildren();
-            $targetTableRow.insertAdjacentHTML('beforeEnd', _templates_manageItemTemplate__WEBPACK_IMPORTED_MODULE_1__.sectionTemplate.changeTableContainer(item));
-            _this.bindSaveClickEvent($targetTableRow);
-        });
-    };
-    ManageItemView.prototype.bindTargetDeleteClickEvent = function ($targetButton) {
-        var _this = this;
-        $targetButton.addEventListener('click', function () {
-            var $targetTableRow = $targetButton.closest('tr');
-            var item = _this.getItemFromTargetTableRow($targetTableRow);
-            if (window.confirm(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.CONFIRM_MESSAGE.DELETE)) {
-                _this.handleTableItemDelete(item);
-                $targetTableRow.remove();
-            }
-        });
-    };
-    ManageItemView.prototype.bindSaveClickEvent = function ($targetTableRow) {
-        var _this = this;
-        var $confirmButton = $targetTableRow.getElementsByClassName(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.ITEM_TABLE_CONFIRM_BUTTON)[0];
-        $confirmButton.addEventListener('click', function () {
-            try {
-                var targetRowIndex = $targetTableRow.rowIndex - 1;
-                var item = _this.getItemFromInputValue($targetTableRow);
-                (0,_validates_validates__WEBPACK_IMPORTED_MODULE_2__.validateAddItemInput)(item);
-                _this.handleTableItemChange(item, targetRowIndex, $targetTableRow);
-            }
-            catch (error) {
-                alert(error.message);
-            }
-        });
-    };
-    ManageItemView.prototype.handleSubmitAddItem = function (event) {
-        event.preventDefault();
-        try {
-            var addItemName = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ADD_ITEM_NAME).value.trim();
-            var addItemPrice = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ADD_ITEM_PRICE).valueAsNumber;
-            var addItemQuantity = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ADD_ITEM_QUANTITY).valueAsNumber;
-            var item = { name: addItemName, price: addItemPrice, quantity: addItemQuantity };
-            (0,_validates_validates__WEBPACK_IMPORTED_MODULE_2__.validateAddItemInput)(item);
-            window.dispatchEvent(new CustomEvent(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.CUSTOM_EVENT.ADD_ITEM, { detail: item }));
-        }
-        catch (error) {
-            alert(error.message);
-        }
-    };
-    ManageItemView.prototype.handleTableItemChange = function (item, targetRowIndex, $targetTableRow) {
-        window.dispatchEvent(new CustomEvent(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.CUSTOM_EVENT.TABLE_ITEM_CHANGE, {
-            detail: { item: item, targetRowIndex: targetRowIndex, $targetTableRow: $targetTableRow }
-        }));
-    };
-    ManageItemView.prototype.handleTableItemDelete = function (item) {
-        window.dispatchEvent(new CustomEvent(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.CUSTOM_EVENT.TABLE_ITEM_DELETE, { detail: { item: item } }));
-    };
-    ManageItemView.prototype.render = function (items) {
+    render(items) {
         this.$content.replaceChildren();
         this.$content.insertAdjacentHTML('beforeend', (0,_templates_manageItemTemplate__WEBPACK_IMPORTED_MODULE_1__.manageItemTemplate)(items));
-        this.bindSubmitEvent();
-        this.bindChangeClickEvents();
-        this.bindDeleteClickEvents();
-    };
-    ManageItemView.prototype.repaintItemTable = function (items) {
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.TABLE_CONTAINER).remove();
-        this.$content.insertAdjacentHTML('beforeend', _templates_manageItemTemplate__WEBPACK_IMPORTED_MODULE_1__.sectionTemplate.tableContainer(items));
-        this.bindChangeClickEvents();
-        this.bindDeleteClickEvents();
-    };
-    ManageItemView.prototype.repaintItemTableRow = function ($targetTableRow, item) {
-        var $targetChangeButton = $targetTableRow.getElementsByClassName(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.ITEM_TABLE_CHANGE_BUTTON);
-        var $targetDeleteButton = $targetTableRow.getElementsByClassName(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.ITEM_TABLE_DELETE_BUTTON);
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ADD_ITEM_FORM).addEventListener('submit', this.handleSubmitEvent.bind(this));
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.ITEM_TABLE).addEventListener('click', this.handleTableClickEvent.bind(this));
+    }
+    appendItemTableRow(item) {
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.ITEM_TABLE_BODY).insertAdjacentHTML('beforeend', _templates_manageItemTemplate__WEBPACK_IMPORTED_MODULE_1__.sectionTemplate.normalTableRow(item));
+    }
+    repaintItemTableRow($targetTableRow, item) {
         $targetTableRow.replaceChildren();
-        $targetTableRow.insertAdjacentHTML('beforeEnd', _templates_manageItemTemplate__WEBPACK_IMPORTED_MODULE_1__.sectionTemplate.normalTableContainer(item));
-        this.bindTargetChangeClickEvent($targetChangeButton[0]);
-        this.bindTargetDeleteClickEvent($targetDeleteButton[0]);
-    };
-    ManageItemView.prototype.clearInput = function () {
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ADD_ITEM_NAME).value = '';
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ADD_ITEM_PRICE).value = '';
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ADD_ITEM_QUANTITY).value = '';
-    };
-    ManageItemView.prototype.getItemFromTargetTableRow = function ($targetTableRow) {
-        var name = $targetTableRow.getElementsByClassName(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.TABLE_ITEM_NAME)[0].textContent;
-        var price = Number($targetTableRow.getElementsByClassName(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.TABLE_ITEM_PRICE)[0].textContent);
-        var quantity = Number($targetTableRow.getElementsByClassName(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.TABLE_ITEM_QUANTITY)[0]
-            .textContent);
-        return { name: name, price: price, quantity: quantity };
-    };
-    ManageItemView.prototype.getItemFromInputValue = function ($targetTableRow) {
-        var name = $targetTableRow
-            .getElementsByClassName(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.TABLE_ITEM_INPUT_NAME)[0]
+        $targetTableRow.insertAdjacentHTML('beforeEnd', _templates_manageItemTemplate__WEBPACK_IMPORTED_MODULE_1__.sectionTemplate.normalTableRow(item));
+    }
+    clearInput() {
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ADD_ITEM_NAME).value = '';
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ADD_ITEM_PRICE).value = '';
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ADD_ITEM_QUANTITY).value = '';
+    }
+    handleSubmitEvent(event) {
+        event.preventDefault();
+        const item = this.getItemFromAddItemInput();
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.emit)({ eventName: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.ADD_ITEM, detail: { item } });
+    }
+    handleTableClickEvent(event) {
+        if (event.target.classList.contains(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.ITEM_TABLE_CHANGE_BUTTON)) {
+            this.onChangeButtonClick(event.target);
+            return;
+        }
+        if (event.target.classList.contains(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.ITEM_TABLE_DELETE_BUTTON)) {
+            this.onDeleteButtonClick(event.target);
+            return;
+        }
+        if (event.target.classList.contains(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.ITEM_TABLE_CONFIRM_BUTTON)) {
+            this.onConfirmButtonClick(event.target);
+        }
+    }
+    onChangeButtonClick($targetButton) {
+        const $targetTableRow = $targetButton.closest('tr');
+        const item = this.getItemFromTargetButton($targetButton);
+        $targetTableRow.replaceChildren();
+        $targetTableRow.insertAdjacentHTML('beforeEnd', _templates_manageItemTemplate__WEBPACK_IMPORTED_MODULE_1__.sectionTemplate.changeTableRow(item));
+    }
+    onDeleteButtonClick($targetButton) {
+        const $targetTableRow = $targetButton.closest('tr');
+        const item = this.getItemFromTargetButton($targetButton);
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.emit)({ eventName: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.TABLE_ITEM_DELETE, detail: { item } });
+        $targetTableRow.remove();
+    }
+    onConfirmButtonClick($targetButton) {
+        const $targetTableRow = $targetButton.closest('tr');
+        const targetRowIndex = $targetTableRow.rowIndex - 1;
+        const item = this.getItemFromChangeInput($targetTableRow);
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.emit)({
+            eventName: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.TABLE_ITEM_CHANGE,
+            detail: { item, targetRowIndex, $targetTableRow },
+        });
+    }
+    getItemFromAddItemInput() {
+        const name = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ADD_ITEM_NAME).value.trim();
+        const price = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ADD_ITEM_PRICE).valueAsNumber;
+        const quantity = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ADD_ITEM_QUANTITY).valueAsNumber;
+        return { name, price, quantity };
+    }
+    getItemFromTargetButton($targetButton) {
+        const { name, price, quantity } = $targetButton.dataset;
+        return { name, price, quantity };
+    }
+    getItemFromChangeInput($targetTableRow) {
+        const name = $targetTableRow
+            .getElementsByClassName(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.TABLE_ITEM_INPUT_NAME)[0]
             .value.trim();
-        var price = $targetTableRow.getElementsByClassName(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.TABLE_ITEM_INPUT_PRICE)[0].valueAsNumber;
-        var quantity = $targetTableRow.getElementsByClassName(_constants_constants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.TABLE_ITEM_INPUT_QUANTITY)[0].valueAsNumber;
-        return { name: name, price: price, quantity: quantity };
-    };
-    return ManageItemView;
-}());
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ManageItemView);
+        const price = $targetTableRow.getElementsByClassName(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.TABLE_ITEM_INPUT_PRICE)[0].valueAsNumber;
+        const quantity = $targetTableRow.getElementsByClassName(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.TABLE_ITEM_INPUT_QUANTITY)[0].valueAsNumber;
+        return { name, price, quantity };
+    }
+}
 
 
 /***/ }),
@@ -1475,25 +1669,23 @@ var ManageItemView = /** @class */ (function () {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ PurchaseItemView)
 /* harmony export */ });
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/common */ "./src/js/utils/common.ts");
 /* harmony import */ var _templates_purchaseItemTemplate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../templates/purchaseItemTemplate */ "./src/js/templates/purchaseItemTemplate.ts");
-/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants/constants */ "./src/js/constants/constants.ts");
+/* harmony import */ var _constants_viewConstants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants/viewConstants */ "./src/js/constants/viewConstants.ts");
 
 
 
-var PurchaseItemView = /** @class */ (function () {
-    function PurchaseItemView() {
-        this.$content = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_constants__WEBPACK_IMPORTED_MODULE_2__.SELECTOR.ID.CONTENT);
+class PurchaseItemView {
+    constructor() {
+        this.$content = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_2__.SELECTOR.ID.CONTENT);
     }
-    PurchaseItemView.prototype.render = function (items, coins, inputMoney) {
+    render(items, coins, inputMoney) {
         this.$content.replaceChildren();
         this.$content.insertAdjacentHTML('beforeend', (0,_templates_purchaseItemTemplate__WEBPACK_IMPORTED_MODULE_1__.purchaseItemTemplate)(items, coins, inputMoney));
-    };
-    return PurchaseItemView;
-}());
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PurchaseItemView);
+    }
+}
 
 
 /***/ })
@@ -1577,7 +1769,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _controllers_AppController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./controllers/AppController */ "./src/js/controllers/AppController.ts");
 
 
-var appController = new _controllers_AppController__WEBPACK_IMPORTED_MODULE_1__["default"]();
+const appController = new _controllers_AppController__WEBPACK_IMPORTED_MODULE_1__["default"]();
 appController.route();
 
 })();
