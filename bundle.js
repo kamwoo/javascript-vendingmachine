@@ -685,7 +685,7 @@ class App {
     }
     handleRouteChange(event) {
         const { page, section } = event.detail;
-        window.history.pushState(null, null, `${_constants_appContants__WEBPACK_IMPORTED_MODULE_1__.URL.BASE_URL}/#${page !== null && page !== void 0 ? page : _constants_appContants__WEBPACK_IMPORTED_MODULE_1__.URL.MAIN}/#${section !== null && section !== void 0 ? section : _constants_appContants__WEBPACK_IMPORTED_MODULE_1__.URL.PURCHASE_ITEM}`);
+        window.history.pushState(null, null, `/${_constants_appContants__WEBPACK_IMPORTED_MODULE_1__.URL.BASE_URL}/#${page !== null && page !== void 0 ? page : _constants_appContants__WEBPACK_IMPORTED_MODULE_1__.URL.MAIN}/#${section !== null && section !== void 0 ? section : _constants_appContants__WEBPACK_IMPORTED_MODULE_1__.URL.PURCHASE_ITEM}`);
     }
     renderPage() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -958,7 +958,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "SIGN_INPUT": () => (/* binding */ SIGN_INPUT)
 /* harmony export */ });
 const URL = {
-    BASE_URL: '/javascript-vendingmachine',
+    BASE_URL: 'javascript-vendingmachine',
     MAIN: 'main',
     SIGN: 'sign',
     MANAGE_ITEM: `manageItem`,
