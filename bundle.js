@@ -958,7 +958,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "SIGN_INPUT": () => (/* binding */ SIGN_INPUT)
 /* harmony export */ });
 const URL = {
-    BASE_URL: 'javascript-vendingmachine',
+    BASE_URL: '/javascript-vendingmachine',
     MAIN: 'main',
     SIGN: 'sign',
     MANAGE_ITEM: `manageItem`,
@@ -2458,10 +2458,9 @@ class UserMenuView {
             return;
         _api_storage__WEBPACK_IMPORTED_MODULE_5__["default"].deleteUserData();
         (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.emit)({
-            eventName: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.ROUTE_CHANGE,
+            eventName: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.PAGE_CHANGE,
             detail: { page: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.URL.MAIN, section: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.URL.PURCHASE_ITEM },
         });
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.emit)({ eventName: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.PAGE_CHANGE });
     }
 }
 
