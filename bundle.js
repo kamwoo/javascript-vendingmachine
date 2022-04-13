@@ -656,9 +656,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ App)
 /* harmony export */ });
-/* harmony import */ var _views_mainView__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/mainView */ "./src/js/views/mainView.ts");
+/* harmony import */ var _views_main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/main */ "./src/js/views/main/index.ts");
 /* harmony import */ var _constants_appContants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants/appContants */ "./src/js/constants/appContants.ts");
-/* harmony import */ var _views_signView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/signView */ "./src/js/views/signView.ts");
+/* harmony import */ var _views_sign__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/sign */ "./src/js/views/sign/index.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -673,8 +673,8 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 class App {
     constructor() {
-        this.mainView = new _views_mainView__WEBPACK_IMPORTED_MODULE_0__["default"]();
-        this.signView = new _views_signView__WEBPACK_IMPORTED_MODULE_2__["default"]();
+        this.mainView = new _views_main__WEBPACK_IMPORTED_MODULE_0__["default"]();
+        this.signView = new _views_sign__WEBPACK_IMPORTED_MODULE_2__["default"]();
         window.addEventListener(_constants_appContants__WEBPACK_IMPORTED_MODULE_1__.CUSTOM_EVENT.PAGE_CHANGE, this.handlePageChange.bind(this));
         window.addEventListener(_constants_appContants__WEBPACK_IMPORTED_MODULE_1__.CUSTOM_EVENT.ROUTE_CHANGE, this.handleRouteChange.bind(this));
         window.addEventListener('popstate', this.renderPage.bind(this));
@@ -685,19 +685,19 @@ class App {
     }
     handleRouteChange(event) {
         const { page, section } = event.detail;
-        window.history.pushState(null, null, `/${_constants_appContants__WEBPACK_IMPORTED_MODULE_1__.URL.BASE_URL}/#${page !== null && page !== void 0 ? page : _constants_appContants__WEBPACK_IMPORTED_MODULE_1__.URL.MAIN}/#${section !== null && section !== void 0 ? section : _constants_appContants__WEBPACK_IMPORTED_MODULE_1__.URL.PURCHASE_ITEM}`);
+        window.history.pushState(null, null, `${_constants_appContants__WEBPACK_IMPORTED_MODULE_1__.URL.BASE_URL}/#${page !== null && page !== void 0 ? page : _constants_appContants__WEBPACK_IMPORTED_MODULE_1__.URL.MAIN}/#${section !== null && section !== void 0 ? section : _constants_appContants__WEBPACK_IMPORTED_MODULE_1__.URL.PURCHASE_ITEM}`);
     }
     renderPage() {
         return __awaiter(this, void 0, void 0, function* () {
-            const [, page, url] = window.location.href.split('/#');
+            const [, page, section] = window.location.href.split('/#');
             switch (page) {
                 case _constants_appContants__WEBPACK_IMPORTED_MODULE_1__.URL.MAIN:
                     yield this.mainView.render();
-                    this.mainView.renderPageSection(url);
+                    this.mainView.renderPageSection(section);
                     break;
                 case _constants_appContants__WEBPACK_IMPORTED_MODULE_1__.URL.SIGN:
                     this.signView.render();
-                    this.signView.renderPageSection(url);
+                    this.signView.renderPageSection(section);
                     break;
                 default:
                     yield this.mainView.render();
@@ -958,7 +958,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "SIGN_INPUT": () => (/* binding */ SIGN_INPUT)
 /* harmony export */ });
 const URL = {
-    BASE_URL: 'javascript-vendingmachine',
+    BASE_URL: '/javascript-vendingmachine',
     MAIN: 'main',
     SIGN: 'sign',
     MANAGE_ITEM: `manageItem`,
@@ -1744,7 +1744,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "validateAddItemInput": () => (/* binding */ validateAddItemInput),
 /* harmony export */   "checkDuplicatedItem": () => (/* binding */ checkDuplicatedItem),
-/* harmony export */   "validateChargeCoins": () => (/* binding */ validateChargeCoins),
+/* harmony export */   "validateInputCoinsSum": () => (/* binding */ validateInputCoinsSum),
 /* harmony export */   "validateInputMoney": () => (/* binding */ validateInputMoney),
 /* harmony export */   "checkItemExist": () => (/* binding */ checkItemExist),
 /* harmony export */   "checkPurchaseAvailable": () => (/* binding */ checkPurchaseAvailable)
@@ -1787,17 +1787,17 @@ const checkDuplicatedItem = (items, newItem, targetIndex) => {
         throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.ITEM_NAME.DUPLICATE_ITEM);
     }
 };
-const validateChargeCoins = (inputMoney) => {
-    if (!Number.isInteger(inputMoney)) {
+const validateInputCoinsSum = (inputCoinsSum) => {
+    if (!Number.isInteger(inputCoinsSum)) {
         throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.INPUT_MONEY.NOT_INTEGER);
     }
-    if (inputMoney <= _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.MONEY.MIN) {
+    if (inputCoinsSum <= _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.MONEY.MIN) {
         throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.INPUT_MONEY.UNDER_MIN);
     }
-    if (inputMoney > _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.MONEY.CHARGE_MAX) {
+    if (inputCoinsSum > _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.MONEY.CHARGE_MAX) {
         throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.INPUT_MONEY.OVER_CHARGE_MAX);
     }
-    if (inputMoney % _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.MONEY.UNIT !== 0) {
+    if (inputCoinsSum % _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.MONEY.UNIT !== 0) {
         throw new Error(_constants_errorConstants__WEBPACK_IMPORTED_MODULE_1__.ERROR_MESSAGE.INPUT_MONEY.INVALID_UNIT);
     }
 };
@@ -1858,17 +1858,17 @@ class CoinManager {
     }
     setCoins(money) {
         this._coins = this.getInitialCoins();
-        this.chargeCoins(money);
+        this.chargeCoinsSum(money);
     }
-    chargeCoins(money) {
-        let restMoney = money;
+    chargeCoinsSum(coinsSum) {
+        let restCoinsSum = coinsSum;
         Object.keys(this.coins).forEach(key => {
             if (key === 'ten') {
-                this.coins[key] += restMoney / _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.COINS[key];
+                this.coins[key] += restCoinsSum / _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.COINS[key];
                 return;
             }
-            const randomNumber = (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.generateRandom)(Math.floor(restMoney / _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.COINS[key]));
-            restMoney -= randomNumber * _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.COINS[key];
+            const randomNumber = (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.generateRandom)(Math.floor(restCoinsSum / _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.COINS[key]));
+            restCoinsSum -= randomNumber * _constants_vendingMachineConstants__WEBPACK_IMPORTED_MODULE_0__.COINS[key];
             this.coins[key] += randomNumber;
         });
     }
@@ -1906,7 +1906,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Item)
 /* harmony export */ });
 class Item {
-    constructor(name, price, quantity, id) {
+    constructor({ name, price, quantity, id }) {
         this._name = name;
         this._price = price;
         this._quantity = quantity;
@@ -1955,16 +1955,13 @@ class ItemManager {
         return this._items.find(item => item.name === name);
     }
     setItems(items) {
-        this._items = items.map(item => {
-            const { name, price, quantity, id } = item;
-            return new _item__WEBPACK_IMPORTED_MODULE_0__["default"](name, price, quantity, id);
-        });
+        this._items = items.map(item => new _item__WEBPACK_IMPORTED_MODULE_0__["default"](item));
     }
-    addItem({ name, price, quantity, id }) {
-        this._items.push(new _item__WEBPACK_IMPORTED_MODULE_0__["default"](name, price, quantity, id));
+    addItem(item) {
+        this._items.push(new _item__WEBPACK_IMPORTED_MODULE_0__["default"](item));
     }
-    changeItem(index, { name, price, quantity, id }) {
-        this._items[index] = new _item__WEBPACK_IMPORTED_MODULE_0__["default"](name, price, quantity, id);
+    changeItem(index, item) {
+        this._items[index] = new _item__WEBPACK_IMPORTED_MODULE_0__["default"](item);
     }
     deleteItem(targetItem) {
         this._items = this._items.filter(item => item.name !== targetItem.name);
@@ -2056,9 +2053,9 @@ class VendingMachine {
     get money() {
         return this.moneyManager.money;
     }
-    chargeCoins(inputMoney) {
-        (0,_validates_validates__WEBPACK_IMPORTED_MODULE_2__.validateChargeCoins)(inputMoney);
-        this.coinManager.chargeCoins(inputMoney);
+    chargeCoinsSum(coinsSum) {
+        (0,_validates_validates__WEBPACK_IMPORTED_MODULE_2__.validateInputCoinsSum)(coinsSum);
+        this.coinManager.chargeCoinsSum(coinsSum);
         _api_productAPI__WEBPACK_IMPORTED_MODULE_4__["default"].updateMoney(this.coinManager.coinsSum);
     }
     chargeMoney(inputMoney) {
@@ -2153,7 +2150,6 @@ __webpack_require__.r(__webpack_exports__);
 class ChargeMoneyView {
     constructor(vendingMachine) {
         this.vendingMachine = vendingMachine;
-        this.vendingMachine = vendingMachine;
     }
     render() {
         const $content = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_2__.SELECTOR.ID.CONTENT);
@@ -2165,12 +2161,12 @@ class ChargeMoneyView {
     handleSubmitEvent(event) {
         try {
             event.preventDefault();
-            const inputMoney = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_2__.SELECTOR.CLASS.CHARGE_MONEY_INPUT).valueAsNumber;
-            this.vendingMachine.chargeCoins(inputMoney);
+            const coinsSum = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_2__.SELECTOR.CLASS.CHARGE_MONEY_INPUT).valueAsNumber;
+            this.vendingMachine.chargeCoinsSum(coinsSum);
             this.repaintCurrentMoney(this.vendingMachine.coinsSum);
             this.repaintCoinsTable(this.vendingMachine.coins);
             this.clearInput();
-            (0,_utils_snackbar__WEBPACK_IMPORTED_MODULE_3__["default"])(`${inputMoney}${_constants_confirmConstants__WEBPACK_IMPORTED_MODULE_4__.CONFIRM_MESSAGE.CHARGE}`);
+            (0,_utils_snackbar__WEBPACK_IMPORTED_MODULE_3__["default"])(`${coinsSum}${_constants_confirmConstants__WEBPACK_IMPORTED_MODULE_4__.CONFIRM_MESSAGE.CHARGE}`);
         }
         catch (error) {
             (0,_utils_snackbar__WEBPACK_IMPORTED_MODULE_3__["default"])(error.message);
@@ -2185,6 +2181,152 @@ class ChargeMoneyView {
     repaintCoinsTable(coins) {
         (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_2__.SELECTOR.CLASS.COIN_TABLE).replaceChildren();
         (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_2__.SELECTOR.CLASS.COIN_TABLE).insertAdjacentHTML('beforeend', _templates_main_chargeMoneyTemplate__WEBPACK_IMPORTED_MODULE_1__.sectionTemplate.coinTableContent(coins));
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/js/views/main/index.ts":
+/*!************************************!*\
+  !*** ./src/js/views/main/index.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ MainView)
+/* harmony export */ });
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/common */ "./src/js/utils/common.ts");
+/* harmony import */ var _templates_main_mainTemplate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../templates/main/mainTemplate */ "./src/js/templates/main/mainTemplate.ts");
+/* harmony import */ var _constants_appContants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants/appContants */ "./src/js/constants/appContants.ts");
+/* harmony import */ var _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../constants/viewConstants */ "./src/js/constants/viewConstants.ts");
+/* harmony import */ var _mangeItemView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mangeItemView */ "./src/js/views/main/mangeItemView.ts");
+/* harmony import */ var _chargeMoneyView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./chargeMoneyView */ "./src/js/views/main/chargeMoneyView.ts");
+/* harmony import */ var _purchaseItemView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./purchaseItemView */ "./src/js/views/main/purchaseItemView.ts");
+/* harmony import */ var _vendingMachine_vendingMachine__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../vendingMachine/vendingMachine */ "./src/js/vendingMachine/vendingMachine.ts");
+/* harmony import */ var _userMenuView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./userMenuView */ "./src/js/views/main/userMenuView.ts");
+/* harmony import */ var _api_storage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../api/storage */ "./src/js/api/storage.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+
+
+
+
+
+
+class MainView {
+    constructor() {
+        this.$app = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.APP);
+        this.vendingMachine = new _vendingMachine_vendingMachine__WEBPACK_IMPORTED_MODULE_7__["default"]();
+        this.manageItemView = new _mangeItemView__WEBPACK_IMPORTED_MODULE_4__["default"](this.vendingMachine);
+        this.chargeMoneyView = new _chargeMoneyView__WEBPACK_IMPORTED_MODULE_5__["default"](this.vendingMachine);
+        this.purchaseItemView = new _purchaseItemView__WEBPACK_IMPORTED_MODULE_6__["default"](this.vendingMachine);
+        this.userMenuView = new _userMenuView__WEBPACK_IMPORTED_MODULE_8__["default"]();
+    }
+    render() {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.$app.replaceChildren();
+            this.$app.insertAdjacentHTML('beforeend', _templates_main_mainTemplate__WEBPACK_IMPORTED_MODULE_1__.mainTemplate);
+            this.checkSignIn();
+            (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.NAV_CONTAINER).addEventListener('click', this.handleClickNavButton.bind(this));
+            (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.SIGN_BUTTON).addEventListener('click', this.handleSignButtonClick.bind(this));
+            yield this.vendingMachine.updateResponseItems();
+            yield this.vendingMachine.updateResponsCoins();
+        });
+    }
+    renderPageSection(section) {
+        var _a;
+        const initialSection = {
+            currentView: this.manageItemView,
+            buttonId: _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID_STRING.ITEM_MANGE_TAB,
+        };
+        const sections = {
+            [_constants_appContants__WEBPACK_IMPORTED_MODULE_2__.URL.MANAGE_ITEM]: initialSection,
+            [_constants_appContants__WEBPACK_IMPORTED_MODULE_2__.URL.CHARGE_MONEY]: {
+                currentView: this.chargeMoneyView,
+                buttonId: _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID_STRING.MONEY_CHARGE_TAB,
+            },
+            [_constants_appContants__WEBPACK_IMPORTED_MODULE_2__.URL.PURCHASE_ITEM]: {
+                currentView: this.purchaseItemView,
+                buttonId: _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID_STRING.ITEM_PURCHASE_TAB,
+            },
+        };
+        const { currentView, buttonId } = (_a = sections[section]) !== null && _a !== void 0 ? _a : initialSection;
+        currentView.render();
+        this.changeButtonColor(buttonId);
+    }
+    changeButtonColor(targetButtonId) {
+        const $navButtons = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.NAV_BUTTON);
+        $navButtons.forEach($navButton => $navButton.id === targetButtonId
+            ? $navButton.classList.add(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.NAV_BUTTON_CLICKED)
+            : $navButton.classList.remove(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.NAV_BUTTON_CLICKED));
+    }
+    handleClickNavButton(event) {
+        const $navButton = event.target;
+        const targetButtonId = $navButton.id;
+        const { url } = $navButton.dataset;
+        if (!$navButton.classList.contains(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.NAV_BUTTON_CLICKED)) {
+            this.changeButtonColor(targetButtonId);
+            this.renderPageSection(url);
+            (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.emit)({ eventName: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.ROUTE_CHANGE, detail: { page: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.URL.MAIN, section: url } });
+        }
+    }
+    handleSignButtonClick(event) {
+        const $signButton = event.target;
+        if ($signButton.classList.contains(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.SIGN_IN)) {
+            this.handleSigInClick($signButton);
+            return;
+        }
+        if ($signButton.classList.contains(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.THUMBNAIL)) {
+            this.handleThumbnailClick($signButton);
+            return;
+        }
+        if ($signButton.classList.contains(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.THUMBNAIL_ACTIVE)) {
+            this.handleActivedThumbnailClick($signButton);
+        }
+    }
+    handleSigInClick($signButton) {
+        const { url } = $signButton.dataset;
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.emit)({ eventName: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.PAGE_CHANGE, detail: { page: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.URL.SIGN, section: url } });
+    }
+    handleThumbnailClick($signButton) {
+        $signButton.classList.replace(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.THUMBNAIL, _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.THUMBNAIL_ACTIVE);
+        this.userMenuView.showMenu();
+    }
+    handleActivedThumbnailClick($signButton) {
+        $signButton.classList.replace(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.THUMBNAIL_ACTIVE, _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.THUMBNAIL);
+        this.userMenuView.hideMenu();
+    }
+    checkSignIn() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!_api_storage__WEBPACK_IMPORTED_MODULE_9__["default"].getAccessToken()) {
+                this.hideTab();
+                return;
+            }
+            const { name } = _api_storage__WEBPACK_IMPORTED_MODULE_9__["default"].getUserData();
+            this.showThumbnail(name.charAt(_constants_appContants__WEBPACK_IMPORTED_MODULE_2__.FIRST_INDEX));
+        });
+    }
+    hideTab() {
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ITEM_MANAGE_TAB).classList.add(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.DISPLAY_NONE);
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.MONEY_CHARGE_TAB).classList.add(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.DISPLAY_NONE);
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.PURCHASE_ITEM_TAB).classList.add(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.DISPLAY_NONE);
+    }
+    showThumbnail(firstName) {
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.SIGN_BUTTON).classList.replace(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.SIGN_IN, _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.THUMBNAIL);
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.SIGN_BUTTON).textContent = firstName;
     }
 }
 
@@ -2213,7 +2355,6 @@ __webpack_require__.r(__webpack_exports__);
 
 class ManageItemView {
     constructor(vendingMachine) {
-        this.vendingMachine = vendingMachine;
         this.vendingMachine = vendingMachine;
     }
     render() {
@@ -2344,7 +2485,6 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 class PurchaseItemView {
     constructor(vendingMachine) {
         this.vendingMachine = vendingMachine;
-        this.vendingMachine = vendingMachine;
     }
     render() {
         const $content = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_2__.SELECTOR.ID.CONTENT);
@@ -2438,11 +2578,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class UserMenuView {
-    constructor() {
-        this.$app = (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.APP);
-    }
     showMenu() {
-        this.$app.insertAdjacentHTML('beforeend', _templates_main_userMenuTemplate__WEBPACK_IMPORTED_MODULE_0__.userMenuTemplate);
+        const $app = (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.APP);
+        $app.insertAdjacentHTML('beforeend', _templates_main_userMenuTemplate__WEBPACK_IMPORTED_MODULE_0__.userMenuTemplate);
         (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.MENU_EDIT_PROFILE).addEventListener('click', this.handleEditProfileClick.bind(this));
         (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.MENU_SIGN_OUT).addEventListener('click', this.handleSignOutClick.bind(this));
     }
@@ -2461,150 +2599,6 @@ class UserMenuView {
             eventName: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.PAGE_CHANGE,
             detail: { page: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.URL.MAIN, section: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.URL.PURCHASE_ITEM },
         });
-    }
-}
-
-
-/***/ }),
-
-/***/ "./src/js/views/mainView.ts":
-/*!**********************************!*\
-  !*** ./src/js/views/mainView.ts ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ MainView)
-/* harmony export */ });
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/common */ "./src/js/utils/common.ts");
-/* harmony import */ var _templates_main_mainTemplate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../templates/main/mainTemplate */ "./src/js/templates/main/mainTemplate.ts");
-/* harmony import */ var _constants_appContants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants/appContants */ "./src/js/constants/appContants.ts");
-/* harmony import */ var _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants/viewConstants */ "./src/js/constants/viewConstants.ts");
-/* harmony import */ var _main_mangeItemView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./main/mangeItemView */ "./src/js/views/main/mangeItemView.ts");
-/* harmony import */ var _main_chargeMoneyView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./main/chargeMoneyView */ "./src/js/views/main/chargeMoneyView.ts");
-/* harmony import */ var _main_purchaseItemView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./main/purchaseItemView */ "./src/js/views/main/purchaseItemView.ts");
-/* harmony import */ var _vendingMachine_vendingMachine__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../vendingMachine/vendingMachine */ "./src/js/vendingMachine/vendingMachine.ts");
-/* harmony import */ var _main_userMenuView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./main/userMenuView */ "./src/js/views/main/userMenuView.ts");
-/* harmony import */ var _api_storage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../api/storage */ "./src/js/api/storage.ts");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-
-
-
-
-
-
-
-
-
-
-class MainView {
-    constructor() {
-        this.$app = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.APP);
-        this.vendingMachine = new _vendingMachine_vendingMachine__WEBPACK_IMPORTED_MODULE_7__["default"]();
-        this.manageItemView = new _main_mangeItemView__WEBPACK_IMPORTED_MODULE_4__["default"](this.vendingMachine);
-        this.chargeMoneyView = new _main_chargeMoneyView__WEBPACK_IMPORTED_MODULE_5__["default"](this.vendingMachine);
-        this.purchaseItemView = new _main_purchaseItemView__WEBPACK_IMPORTED_MODULE_6__["default"](this.vendingMachine);
-        this.userMenuView = new _main_userMenuView__WEBPACK_IMPORTED_MODULE_8__["default"]();
-    }
-    render() {
-        return __awaiter(this, void 0, void 0, function* () {
-            this.$app.replaceChildren();
-            this.$app.insertAdjacentHTML('beforeend', _templates_main_mainTemplate__WEBPACK_IMPORTED_MODULE_1__.mainTemplate);
-            this.checkSignIn();
-            (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.NAV_CONTAINER).addEventListener('click', this.handleClickNavButton.bind(this));
-            (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.SIGN_BUTTON).addEventListener('click', this.handleSignButtonClick.bind(this));
-            yield this.vendingMachine.updateResponseItems();
-            yield this.vendingMachine.updateResponsCoins();
-        });
-    }
-    renderPageSection(url) {
-        switch (url) {
-            case _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.URL.MANAGE_ITEM:
-                this.manageItemView.render();
-                this.changeButtonColor(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID_STRING.ITEM_MANGE_TAB);
-                break;
-            case _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.URL.CHARGE_MONEY:
-                this.chargeMoneyView.render();
-                this.changeButtonColor(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID_STRING.MONEY_CHARGE_TAB);
-                break;
-            case _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.URL.PURCHASE_ITEM:
-                this.purchaseItemView.render();
-                this.changeButtonColor(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID_STRING.ITEM_PURCHASE_TAB);
-                break;
-            default:
-                this.manageItemView.render();
-                this.changeButtonColor(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID_STRING.ITEM_MANGE_TAB);
-        }
-    }
-    changeButtonColor(targetButtonId) {
-        const $navButtons = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS.NAV_BUTTON);
-        $navButtons.forEach($navButton => $navButton.id === targetButtonId
-            ? $navButton.classList.add(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.NAV_BUTTON_CLICKED)
-            : $navButton.classList.remove(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.NAV_BUTTON_CLICKED));
-    }
-    handleClickNavButton(event) {
-        const $navButton = event.target;
-        const targetButtonId = $navButton.id;
-        const { url } = $navButton.dataset;
-        if (!$navButton.classList.contains(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.NAV_BUTTON_CLICKED)) {
-            this.changeButtonColor(targetButtonId);
-            this.renderPageSection(url);
-            (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.emit)({ eventName: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.ROUTE_CHANGE, detail: { page: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.URL.MAIN, section: url } });
-        }
-    }
-    handleSignButtonClick(event) {
-        const $signButton = event.target;
-        if ($signButton.classList.contains(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.SIGN_IN)) {
-            this.handleSigInClick($signButton);
-            return;
-        }
-        if ($signButton.classList.contains(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.THUMBNAIL)) {
-            this.handleThumbnailClick($signButton);
-            return;
-        }
-        if ($signButton.classList.contains(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.THUMBNAIL_ACTIVE)) {
-            this.handleActivedThumbnailClick($signButton);
-        }
-    }
-    handleSigInClick($signButton) {
-        const { url } = $signButton.dataset;
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.emit)({ eventName: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.CUSTOM_EVENT.PAGE_CHANGE, detail: { page: _constants_appContants__WEBPACK_IMPORTED_MODULE_2__.URL.SIGN, section: url } });
-    }
-    handleThumbnailClick($signButton) {
-        $signButton.classList.replace(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.THUMBNAIL, _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.THUMBNAIL_ACTIVE);
-        this.userMenuView.showMenu();
-    }
-    handleActivedThumbnailClick($signButton) {
-        $signButton.classList.replace(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.THUMBNAIL_ACTIVE, _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.THUMBNAIL);
-        this.userMenuView.hideMenu();
-    }
-    checkSignIn() {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (!_api_storage__WEBPACK_IMPORTED_MODULE_9__["default"].getAccessToken()) {
-                this.hideTab();
-                return;
-            }
-            const { name } = _api_storage__WEBPACK_IMPORTED_MODULE_9__["default"].getUserData();
-            this.showThumbnail(name.charAt(_constants_appContants__WEBPACK_IMPORTED_MODULE_2__.FIRST_INDEX));
-        });
-    }
-    hideTab() {
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.ITEM_MANAGE_TAB).classList.add(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.DISPLAY_NONE);
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.MONEY_CHARGE_TAB).classList.add(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.DISPLAY_NONE);
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.PURCHASE_ITEM_TAB).classList.add(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.DISPLAY_NONE);
-    }
-    showThumbnail(firstName) {
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.SIGN_BUTTON).classList.replace(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.SIGN_IN, _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.CLASS_STRING.THUMBNAIL);
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.SIGN_BUTTON).textContent = firstName;
     }
 }
 
@@ -2680,6 +2674,56 @@ class EditProfileView {
         const password = (0,_utils_common__WEBPACK_IMPORTED_MODULE_5__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.PASSWORD_INPUT).value;
         const confirmPassword = (0,_utils_common__WEBPACK_IMPORTED_MODULE_5__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.PASSWORD_CONFIRM_INPUT).value;
         return { id, name, password, confirmPassword };
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/js/views/sign/index.ts":
+/*!************************************!*\
+  !*** ./src/js/views/sign/index.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SignView)
+/* harmony export */ });
+/* harmony import */ var _constants_appContants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../constants/appContants */ "./src/js/constants/appContants.ts");
+/* harmony import */ var _templates_sign_signTemplate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../templates/sign/signTemplate */ "./src/js/templates/sign/signTemplate.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/common */ "./src/js/utils/common.ts");
+/* harmony import */ var _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../constants/viewConstants */ "./src/js/constants/viewConstants.ts");
+/* harmony import */ var _signInView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./signInView */ "./src/js/views/sign/signInView.ts");
+/* harmony import */ var _signUpView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./signUpView */ "./src/js/views/sign/signUpView.ts");
+/* harmony import */ var _editProfileView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editProfileView */ "./src/js/views/sign/editProfileView.ts");
+
+
+
+
+
+
+
+class SignView {
+    constructor() {
+        this.$app = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.APP);
+        this.signInView = new _signInView__WEBPACK_IMPORTED_MODULE_4__["default"]();
+        this.singUpView = new _signUpView__WEBPACK_IMPORTED_MODULE_5__["default"]();
+        this.editProfileView = new _editProfileView__WEBPACK_IMPORTED_MODULE_6__["default"]();
+    }
+    render() {
+        this.$app.replaceChildren();
+        this.$app.insertAdjacentHTML('beforeend', _templates_sign_signTemplate__WEBPACK_IMPORTED_MODULE_1__.signTemplate);
+    }
+    renderPageSection(section) {
+        var _a;
+        const sections = {
+            [_constants_appContants__WEBPACK_IMPORTED_MODULE_0__.URL.SIGN_IN]: this.signInView,
+            [_constants_appContants__WEBPACK_IMPORTED_MODULE_0__.URL.SING_UP]: this.singUpView,
+            [_constants_appContants__WEBPACK_IMPORTED_MODULE_0__.URL.EDIT_PROFILE]: this.editProfileView,
+        };
+        const currentView = (_a = sections[section]) !== null && _a !== void 0 ? _a : this.signInView;
+        currentView.render();
     }
 }
 
@@ -2823,61 +2867,6 @@ class SignUpView {
         const password = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_6__.SELECTOR.ID.PASSWORD_INPUT).value;
         const confirmPassword = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_6__.SELECTOR.ID.PASSWORD_CONFIRM_INPUT).value;
         return { email, name, password, confirmPassword };
-    }
-}
-
-
-/***/ }),
-
-/***/ "./src/js/views/signView.ts":
-/*!**********************************!*\
-  !*** ./src/js/views/signView.ts ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ SignView)
-/* harmony export */ });
-/* harmony import */ var _constants_appContants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/appContants */ "./src/js/constants/appContants.ts");
-/* harmony import */ var _templates_sign_signTemplate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../templates/sign/signTemplate */ "./src/js/templates/sign/signTemplate.ts");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/common */ "./src/js/utils/common.ts");
-/* harmony import */ var _constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants/viewConstants */ "./src/js/constants/viewConstants.ts");
-/* harmony import */ var _sign_signInView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sign/signInView */ "./src/js/views/sign/signInView.ts");
-/* harmony import */ var _sign_signUpView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sign/signUpView */ "./src/js/views/sign/signUpView.ts");
-/* harmony import */ var _sign_editProfileView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./sign/editProfileView */ "./src/js/views/sign/editProfileView.ts");
-
-
-
-
-
-
-
-class SignView {
-    constructor() {
-        this.$app = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.$)(_constants_viewConstants__WEBPACK_IMPORTED_MODULE_3__.SELECTOR.ID.APP);
-        this.signInView = new _sign_signInView__WEBPACK_IMPORTED_MODULE_4__["default"]();
-        this.singUpView = new _sign_signUpView__WEBPACK_IMPORTED_MODULE_5__["default"]();
-        this.editProfileView = new _sign_editProfileView__WEBPACK_IMPORTED_MODULE_6__["default"]();
-    }
-    render() {
-        this.$app.replaceChildren();
-        this.$app.insertAdjacentHTML('beforeend', _templates_sign_signTemplate__WEBPACK_IMPORTED_MODULE_1__.signTemplate);
-    }
-    renderPageSection(url) {
-        switch (url) {
-            case _constants_appContants__WEBPACK_IMPORTED_MODULE_0__.URL.SIGN_IN:
-                this.signInView.render();
-                break;
-            case _constants_appContants__WEBPACK_IMPORTED_MODULE_0__.URL.SING_UP:
-                this.singUpView.render();
-                break;
-            case _constants_appContants__WEBPACK_IMPORTED_MODULE_0__.URL.EDIT_PROFILE:
-                this.editProfileView.render();
-                break;
-            default:
-                this.signInView.render();
-        }
     }
 }
 
